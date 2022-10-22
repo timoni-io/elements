@@ -1,0 +1,15 @@
+type = "container"
+build = "FROM mariadb:10.8"
+run-cmd = ["docker-entrypoint.sh", "mariadbd"]
+run-writable-file-system = true
+
+[variables]
+TZ = "{{config.TZ}}"
+MARIADB_USER = "{{config.DB_USER}}"
+MARIADB_PASSWORD = "{{config.DB_PW}}"
+MARIADB_ROOT_PASSWORD = "{{config.DB_PW}}"
+MARIADB_DATABASE = "{{config.DB_NAME}}"
+
+[expose.3306]
+type = "tcp-internal"
+probe.disable = true

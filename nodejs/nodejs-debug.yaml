@@ -1,0 +1,6 @@
+container:
+  from:
+    element: nodejs
+
+  run-cmd: [sleep, infinity]
+  run-writable-file-system: true

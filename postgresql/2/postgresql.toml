@@ -1,0 +1,54 @@
+type = "container"
+
+dockerfile = "postgresql.Dockerfile"
+run-cmd = ["docker-entrypoint.sh", "postgres"]
+
+cpu = 200
+ram = 2000
+
+[variables]
+#POSTGRES_HOST_AUTH_METHOD: trust
+POSTGRES_USER = "{{PGUSER}}"
+PGUSER = "postgres"
+PGDATA = "/var/lib/postgresql/pgdata"
+POSTGRES_ROOT_PASSWORD = "tajnehaslo"
+POSTGRES_PASSWORD = "nopcommerce"
+POSTGRES_DB = "nopcommerce"
+
+[expose.5432]
+type = "tcp-internal"
+
+[inputs]
+AWS_PASS.type = "secret"
+AWS_RESTOR_FILE.type = "text"
+# POSTGRES_ROOT_PASSWORD.type = "secret"
+# POSTGRES_PASSWORD.type = "secret"
+# POSTGRES_DB.type = "text"
+
+[storage."/var/lib/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/etc/postgresql"]
+type = "block"
+max-size-mb = 500
+
+[storage."/var/log/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40
+
+# [storage."/backups"]
+# type = "block"
+# max-size-mb = 2000
+
+[actions]
+"CREATE-EXTENSION-citext" = "psql -h postgresql -U postgres -d nopcommerce -c 'CREATE EXTENSION citext;'"
+"restre" = "zrob cos .sh -W {{POSTGRES_DB}} - {{AWS_PASS}} "

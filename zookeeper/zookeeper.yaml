@@ -1,0 +1,51 @@
+container:
+  build: |
+    FROM gcr.io/google_samples/k8szk:v3
+    COPY run.sh /
+
+  expose:
+    2181: { type: tcp }
+    2888:
+      type: tcp
+      probe-disable: true
+    3888:
+      type: tcp
+      probe-disable: true
+
+  variables:
+    ZK_REPLICAS: 3
+    JMXAUTH: false
+    JMXDISABLE: false
+    JMXPORT: 1099
+    JMXSSL: false
+    ZK_CLIENT_PORT: 2181
+    ZK_ELECTION_PORT: 3888
+    ZK_HEAP_SIZE: 1G
+    ZK_INIT_LIMIT: 5
+    ZK_LOG_LEVEL: INFO
+    ZK_MAX_CLIENT_CNXNS: 60
+    ZK_MAX_SESSION_TIMEOUT: 40000
+    ZK_MIN_SESSION_TIMEOUT: 4000
+    ZK_PURGE_INTERVAL: 0
+    ZK_SERVER_PORT: 2888
+    ZK_SNAP_RETAIN_COUNT: 3
+    ZK_SYNC_LIMIT: 10
+    ZK_TICK_TIME: 2000
+
+  scale:
+    min: 3
+
+  run-cmd: ["bash", "-exc", "/run.sh"]
+
+  storage:
+    /var/lib/zookeeper: 1000 # MB
+
+  run-writable-file-system: true
+
+  expose-headless: true
+
+  cpu-guaranteed: 100
+  cpu-max: 200
+  memory-guaranteed: 2048
+  memory-max: 4096
+  

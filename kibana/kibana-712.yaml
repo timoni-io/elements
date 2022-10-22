@@ -1,0 +1,25 @@
+container:
+  build: |
+    FROM docker.elastic.co/kibana/kibana:7.12.0
+    USER kibana
+
+  expose:
+    5601:
+      http-domain: {}
+
+  variables:
+    ELASTICSEARCH_HOSTS: http://elasticsearch-es-http:9200
+
+  run-as-user: [1000] # kibana
+  run-cmd: [/usr/local/bin/kibana-docker]
+  # run-cmd: [sleep, infinity]
+  run-writable-file-system: true
+
+  requires:
+    elasticsearch:
+      element: elasticsearch-712
+    domain:
+      element: kibana-domain
+
+  cpu: 200
+  ram: 1000

@@ -1,0 +1,6 @@
+FROM alpine:latest
+RUN apk update
+RUN apk add curl net-tools  git jq
+RUN git clone https://postalserver.io/start/install /opt/postal/install
+RUN ln -s /opt/postal/install/bin/postal /usr/bin/postal
+RUN postal bootstrap {{CLUSTER_DOMAIN}}

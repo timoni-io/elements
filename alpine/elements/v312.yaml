@@ -1,0 +1,9 @@
+container:
+  description: Alpine Linux 3.12
+
+  build: |
+    ADD alpine-minirootfs-3.12.3-x86_64.tar.gz /
+    COPY apk-repos-312 /etc/apk/repositories
+    SHELL ["/bin/sh", "-c"]
+
+  run-cmd: [/bin/sleep, infinity]

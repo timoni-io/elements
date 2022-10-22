@@ -1,0 +1,25 @@
+type = "container"
+description = "Wiki.js"
+
+build = """
+FROM requarks/wiki:2.5
+RUN mkdir /wiki/data/cache
+RUN chmod a+rwx /wiki/data/cache
+RUN mkdir /wiki/data/uploads
+RUN chmod a+rwx /wiki/data/uploads
+"""
+
+run-cmd = ["node", "server"]
+run-writable-file-system=true
+
+[variables]
+DB_TYPE = "postgres"
+DB_HOST = "postgresql"
+DB_PORT = "5432"
+DB_USER = "{{postgresql.PGUSER}}"
+DB_PASS = "{{postgresql.POSTGRES_PASSWORD}}"
+DB_NAME = "{{postgresql.POSTGRES_DB}}"
+HA_ACTIVE = "true"
+
+[expose.3000]
+type = "http-domain"

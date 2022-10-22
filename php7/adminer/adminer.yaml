@@ -1,0 +1,27 @@
+container:
+  description: https://www.adminer.org/pl/
+
+  from:
+    element: php-fpm-nginx
+
+  build: |
+    WORKDIR /app
+    USER root
+    RUN rm -rf /app/web/*
+    RUN wget https://github.com/vrana/adminer/releases/download/v4.8.0/adminer-4.8.0.php -O /app/web/index.php
+
+    # max upload file size
+    RUN sed 's|post_max_size = 8M|post_max_size = 200M|g' -i /etc/php7/conf.d/custom.ini
+    RUN sed 's|pload_max_filesize = 8M|pload_max_filesize = 200M|g' -i /etc/php7/conf.d/custom.ini
+
+    COPY php-fpm-nginx/www/index.php /app/web/info.php
+
+    USER nobody
+
+  storage:
+    /tmp:
+      temp:
+        max-size: 600
+
+  cpu: 100
+  ram: 2000

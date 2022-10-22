@@ -1,0 +1,6 @@
+container:
+  build: |
+    FROM: mailhog/mailhog:v1.0.1
+
+  run-cmd: [MailHog]
+

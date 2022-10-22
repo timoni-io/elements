@@ -1,0 +1,20 @@
+container:
+  build: FROM postgres:13.2
+
+  run-as-user: [0]
+  run-cmd: [docker-entrypoint.sh, postgres]
+  expose:
+    5432: 
+      tcp-internal: true
+
+  variables:
+    #POSTGRES_HOST_AUTH_METHOD: trust
+    POSTGRES_PASSWORD: sfgrtwertfsf
+    PGUSER: postgres
+    PGDATA: /var/lib/postgresql/pgdata
+
+  storage:
+    /var/lib/postgresql: {block: {max-size: 2000}}
+    /var/run: {temp: {max-size: 10}}
+    /tmp: {temp: {max-size: 40}}
+

@@ -1,0 +1,44 @@
+container:
+  build: |
+    FROM confluentinc/cp-kafka:4.1.2-2
+    COPY run.sh /
+    
+  expose:
+    9092: 
+      type: tcp
+      probe-disable: true
+    5555: 
+      type: tcp
+      probe-disable: true
+
+  variables:
+    KAFKA_HEAP_OPTS: -Xmx1G -Xms1G
+    KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+    KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    KAFKA_LOG_DIRS: /opt/kafka/data/logs
+    KAFKA_CONFLUENT_SUPPORT_METRICS_ENABLE: false
+    KAFKA_JMX_PORT: 5555
+
+  scale:
+    min: 3
+
+  run-cmd: ["bash", "-exc", "/run.sh"]
+
+  requires:
+    zookeeper:
+      git: zookeeper
+      branch: master
+      commit: 4a5f1d75e0d4564cbe889680e764cdaa6f0284cf
+      element: zookeeper
+
+  storage:
+    /opt/kafka/data: 1000 # MB
+
+  run-writable-file-system: true
+
+  expose-headless: true
+
+  cpu-guaranteed: 200
+  cpu-max: 400
+  memory-guaranteed: 6144
+  memory-max: 12288

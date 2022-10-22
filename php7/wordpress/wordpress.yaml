@@ -1,0 +1,23 @@
+container:
+  description: wordpress
+
+  from:
+    element: php-fpm-nginx
+
+  build: |
+    WORKDIR /app
+    USER root
+    RUN rm -rf /app/web && \
+        wget https://pl.wordpress.org/wordpress-5.7.1-pl_PL.tar.gz && \
+        tar xvfz wordpress-5.7.1-pl_PL.tar.gz && \
+        mv wordpress web
+    WORKDIR /app/web
+    COPY wordpress/wp-config.php .
+    USER nobody
+
+  requires:
+    mariadb:
+      git: mariadb
+      branch: master
+      commit: 5b5e47992256c45e778cc717514d6d2e39b1a61e
+      element: standalone

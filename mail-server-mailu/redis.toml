@@ -1,0 +1,13 @@
+type = "container"
+
+build = "FROM redis:alpine"
+
+run-cmd = ["redis-server"]
+
+[storage."/data"]
+type = "block"
+max-size-mb = 1000
+
+[expose.6379]
+type = "tcp-internal"
+probe.disable = true

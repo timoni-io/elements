@@ -1,0 +1,20 @@
+# [[users]]
+# id = "testek"
+# name = "Testek Testowicz"
+# email = "tete@cs-local.syslabit.org"
+# username = "mainkube/mainkubemail1"
+# password = "Z7z2Hn1cwHZB59f8QI10O7U3"
+# # key = "Z7z2Hn1cwHZB59f8QI10O7U3"
+# [[users]]
+# id = "admin"
+# name = "Admin Adminowicz"
+# email = "admin.adminowicz@cs-local.syslabit.org"
+# username = "mainkube/mainkubemail1"
+# password = "1234qwer"
+# # key = "Z7z2Hn1cwHZB59f8QI10O7U3"
+[[users]]
+id = "admin"
+name = "Admin Adminowicz"
+email = "admin.adminowicz@cs-local.syslabit.org"
+username = "mainkube/mainkubemail1"
+password = "1234qwer"

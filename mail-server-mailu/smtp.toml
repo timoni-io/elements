@@ -1,0 +1,63 @@
+type = "container"
+
+build = "FROM mailu/postfix:1.8"
+
+run-writable-file-system = true
+
+run-cmd = ["/bin/sh", "-c", "/start.py"]
+
+[variables]
+# config variables
+SECRET_KEY = "{{config.SECRET_KEY}}"
+SUBNET = "{{config.SUBNET}}"
+DOMAIN = "{{config.DOMAIN}}"
+HOSTNAMES = "{{config.HOSTNAMES}}"
+POSTMASTER = "{{config.POSTMASTER}}"
+TLS_FLAVOR = "{{config.TLS_FLAVOR}}"
+AUTH_RATELIMIT_IP = "{{config.AUTH_RATELIMIT_IP}}"
+AUTH_RATELIMIT_USER = "{{config.AUTH_RATELIMIT_USER}}"
+DISABLE_STATISTICS = "{{config.DISABLE_STATISTICS}}"
+ADMIN = "{{config.ADMIN}}"
+WEBMAIL = "{{config.WEBMAIL}}"
+WEBDAV = "{{config.WEBDAV}}"
+ANTIVIRUS = "{{config.ANTIVIRUS}}"
+MESSAGE_SIZE_LIMIT = "{{config.MESSAGE_SIZE_LIMIT}}"
+MESSAGE_RATELIMIT = "{{config.MESSAGE_RATELIMIT}}"
+# RELAYNETS = "{{config.RELAYNETS}}"
+FETCHMAIL_DELAY = "{{config.FETCHMAIL_DELAY}}"
+RECIPIENT_DELIMITER = "{{config.RECIPIENT_DELIMITER}}"
+DMARC_RUF = "{{config.DMARC_RUF}}"
+WELCOME_SUBJECT = "{{config.WELCOME_SUBJECT}}"
+WELCOME_BODY = "{{config.WELCOME_BODY}}"
+# COMPRESSION = "{{config.COMPRESSION}}"
+WEBROOT_REDIRECT = "{{config.WEBROOT_REDIRECT}}"
+WEB_ADMIN = "{{config.WEB_ADMIN}}"
+WEB_WEBMAIL = "{{config.WEB_WEBMAIL}}"
+SITENAME = "{{config.SITENAME}}"
+WEBSITE = "{{config.WEBSITE}}"
+COMPOSE_PROJECT_NAME = "{{config.COMPOSE_PROJECT_NAME}}"
+CREDENTIAL_ROUNDS = "{{config.CREDENTIAL_ROUNDS}}"
+# REAL_IP_HEADER = "{{config.REAL_IP_HEADER}}"
+TZ = "{{config.TZ}}"
+DB_FLAVOR = "{{config.DB_FLAVOR}}"
+DB_USER = "{{config.DB_USER}}"
+DB_PW = "{{config.DB_PW}}"
+DB_HOST = "{{config.DB_HOST}}"
+DB_NAME = "{{config.DB_NAME}}"
+
+[expose.25]
+type = "tcp-internal"
+probe.disable = true
+[expose.10025]
+type = "tcp-internal"
+probe.disable = true
+
+
+# [storage."/queue"]
+# type = "block"
+# max-size-mb = 500
+
+# [storage."/overrides"]
+# type = "block"
+# max-size-mb = 500
+# read-only = true

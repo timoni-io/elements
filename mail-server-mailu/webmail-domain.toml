@@ -1,0 +1,5 @@
+type = "domain"
+
+include-elements = ["webmail"]
+
+names = ["webmail.{{CLUSTER_DOMAIN}}"]

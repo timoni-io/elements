@@ -1,0 +1,3 @@
+container:
+  image: phpmyadmin/phpmyadmin:5.1.1
+  run-cmd: [sleep, infinity]

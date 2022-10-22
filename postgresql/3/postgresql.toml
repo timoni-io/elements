@@ -1,0 +1,31 @@
+type = "container"
+
+build = "FROM postgres:14.2-alpine"
+
+run-cmd = ["docker-entrypoint.sh", "postgres"]
+
+[expose.5432]
+type = "tcp-internal"
+
+[variables]
+#POSTGRES_HOST_AUTH_METHOD: trust
+POSTGRES_USER = "{{PGUSER}}"
+PGUSER = "postgres"
+PGDATA = "/var/lib/postgresql/pgdata"
+
+[inputs]
+POSTGRES_ROOT_PASSWORD.type = "secret"
+POSTGRES_PASSWORD.type = "secret"
+POSTGRES_DB.type = "text"
+
+[storage."/var/lib/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40

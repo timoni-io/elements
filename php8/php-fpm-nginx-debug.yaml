@@ -1,0 +1,7 @@
+container:
+  from:
+    element: php-fpm-nginx
+
+  run-writable-file-system: true
+  run-as-user: [0]
+  run-cmd: [/bin/sleep, infinity]

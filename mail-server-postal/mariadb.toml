@@ -1,0 +1,15 @@
+type = "container"
+
+run-writable-file-system = true
+
+[from]
+project = "mariadb"
+branch = "master"
+commit = "41e4d203e48ea363fd938e541c475733ca47f6e2"
+toml-file = "standalone"
+
+[variables]
+MYSQL_DATABASE = "{{config.MYSQL_DATABASE}}"
+MYSQL_PASSWORD = "{{config.MYSQL_PASSWORD}}"
+MYSQL_ROOT_PASSWORD = "{{config.MYSQL_ROOT_PASSWORD}}"
+MYSQL_USER = "{{config.MYSQL_USER}}"

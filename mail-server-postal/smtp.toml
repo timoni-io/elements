@@ -1,0 +1,25 @@
+type = "container"
+
+from.toml-file = "core"
+build = """
+COPY postal.yml /config/postal.yml
+COPY signing.key /config/signing.key
+COPY cert/smtp.cert /config/smtp.cert
+COPY cert/smtp.key /config/smtp.key
+"""
+
+run-writable-file-system = true
+apply-variables-on-files = ["/config/postal.yml"]
+run-cmd = ["/opt/postal/app/bin/postal", "smtp-server"]
+# capability-add-net-bind-service = true
+
+[variables]
+RABBITMQ_DEFAULT_USER = "{{config.RABBITMQ_DEFAULT_USER}}"
+RABBITMQ_DEFAULT_PASS = "{{config.RABBITMQ_DEFAULT_PASS}}"
+RABBITMQ_DEFAULT_VHOST = "{{config.RABBITMQ_DEFAULT_VHOST}}"
+SMTP_DOMAIN = "{{config.SMTP_DOMAIN}}"
+WEB_DOMAIN = "{{config.WEB_DOMAIN}}"
+
+[expose.25]
+type = "ip-external"
+probe.disable = true

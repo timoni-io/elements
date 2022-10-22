@@ -1,0 +1,63 @@
+type = "config"
+
+[variables]
+# Common configuration variables
+SECRET_KEY = "BBXD9HGGQVL5QW92"
+SUBNET = "10.42.0.0/16"
+DOMAIN = "{{CLUSTER_DOMAIN}}"
+HOSTNAMES = "front.{{CLUSTER_DOMAIN}}"
+POSTMASTER = "admin"
+TLS_FLAVOR = "notls"
+AUTH_RATELIMIT_IP = "60/hour"
+AUTH_RATELIMIT_USER = "100/day"
+DISABLE_STATISTICS = "False"
+
+# Optional features
+ADMIN = "true"
+WEBMAIL = "rainloop"
+WEBDAV = "none"
+ANTIVIRUS = "none"
+
+# Admin
+INITIAL_ADMIN_ACCOUNT = "admin"
+INITIAL_ADMIN_DOMAIN = "{{CLUSTER_DOMAIN}}"
+INITIAL_ADMIN_PW = "pass"
+
+# Mail settings
+MESSAGE_SIZE_LIMIT = "50000000"
+MESSAGE_RATELIMIT = "200/day"
+RELAYNETS = ""
+FETCHMAIL_DELAY = "600"
+RECIPIENT_DELIMITER = "+"
+DMARC_RUF = "admin"
+WELCOME_SUBJECT = "Welcome to your new email account"
+WELCOME_BODY = "Welcome to your new email account, if you can read this, then it is configured properly!"
+COMPRESSION = ""
+
+# Web settings
+WEBROOT_REDIRECT = "/admin"
+WEB_ADMIN = "/admin"
+WEB_WEBMAIL = "/"
+SITENAME = "Mailu-Name"
+WEBSITE = "https://mailu.io"
+
+ANTISPAM_WEBUI_ADDRESS = "antispam.{{ENVIRONMENT_ID}}.svc"
+FRONT_ADDRESS = "front.{{ENVIRONMENT_ID}}.svc"
+ADMIN_ADDRESS = "admin.{{ENVIRONMENT_ID}}.svc"
+IMAP_ADDRESS = "imap.{{ENVIRONMENT_ID}}.svc"
+REDIS_ADDRESS = "redis.{{ENVIRONMENT_ID}}.svc"
+SMTP_ADDRESS = "smtp.{{ENVIRONMENT_ID}}.svc"
+# QUOTA_STORAGE_URL = "redis://redis.{{ENVIRONMENT_ID}}.svc:6379/1"
+
+# Advanced settings
+COMPOSE_PROJECT_NAME = "mailu"
+CREDENTIAL_ROUNDS = "12"
+REAL_IP_HEADER = ""
+
+# Database settings
+TZ = "Etc/UTC"
+DB_FLAVOR = "mysql"
+DB_USER = "mailu"
+DB_PW = "mailu"
+DB_HOST = "mariadb.{{ENVIRONMENT_ID}}.svc"
+DB_NAME = "mailu"

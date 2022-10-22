@@ -1,0 +1,9 @@
+container:
+  from:
+    element: php-fpm-nginx
+
+  storage:
+    /storage: {block: {max-size: 100}} # MB
+
+  run-writable-file-system: true
+  run-as-user: [0]

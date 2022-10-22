@@ -1,0 +1,26 @@
+type = "container"
+description = "Grafana 9"
+
+build = """
+    FROM grafana/grafana:9.0.4
+
+    RUN grafana-cli plugins install grafana-piechart-panel
+
+    COPY grafana.ini /etc/grafana
+    COPY provisioning /etc/grafana/provisioning
+    COPY dashboards /etc/grafana/dashboards
+"""
+
+run-cmd = ["/run.sh"]
+run-writable-file-system = true
+
+
+[variables]
+PATH = "/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[expose.3000]
+type = "http-domain"
+
+[inputs]
+GF_SECURITY_ADMIN_PASSWORD.type = "secret"
+

@@ -1,0 +1,30 @@
+type = "container"
+
+from.toml-file = "core"
+build = """
+COPY postal.yml /config/postal.yml
+COPY signing.key /config/signing.key
+"""
+
+run-writable-file-system = true
+apply-variables-on-files = ["/config/postal.yml"]
+run-cmd = ["/opt/postal/app/bin/postal", "web-server"]
+# run-cmd = ["sleep", "99999"]
+
+[variables]
+RABBITMQ_DEFAULT_USER = "{{config.RABBITMQ_DEFAULT_USER}}"
+RABBITMQ_DEFAULT_PASS = "{{config.RABBITMQ_DEFAULT_PASS}}"
+RABBITMQ_DEFAULT_VHOST = "{{config.RABBITMQ_DEFAULT_VHOST}}"
+
+MARIADB_DATABASE = "{{config.MYSQL_DATABASE}}"
+MARIADB_ROOT_PASSWORD = "{{config.MYSQL_ROOT_PASSWORD}}"
+
+SMTP_DOMAIN = "{{config.SMTP_DOMAIN}}"
+WEB_DOMAIN = "{{config.WEB_DOMAIN}}"
+
+[expose.5000]
+type = "http-domain"
+probe.disable = true
+
+[actions]
+"db-init" = "/opt/postal/app/bin/postal initialize"

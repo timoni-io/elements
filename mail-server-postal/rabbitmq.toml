@@ -1,0 +1,15 @@
+type = "container"
+build = "FROM rabbitmq:3"
+run-cmd = ["rabbitmq-server"]
+
+[variables]
+RABBITMQ_DEFAULT_USER = "{{config.RABBITMQ_DEFAULT_USER}}"
+RABBITMQ_DEFAULT_PASS = "{{config.RABBITMQ_DEFAULT_PASS}}"
+RABBITMQ_DEFAULT_VHOST = "{{config.RABBITMQ_DEFAULT_VHOST}}"
+
+[expose.5672]
+type = "tcp-internal"
+
+[storage."/var/log"]
+type= "block"
+max-size-mb = 500

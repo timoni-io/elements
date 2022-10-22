@@ -1,0 +1,11 @@
+# Syslabit
+from_user = "admin@cs-local.syslabit.org"
+to_user = "test1@cs-local.syslabit.org"
+smtp_login = "mainkube/mainkubemail"
+# smtp_pass = "NsbVJHMr3VDMwvpySmhR4zaA"
+
+# Testowo
+# from_user = "fromuser@testowo"
+# to_user = "touser@testowo"
+# smtp_login = "testowo/testowomail"
+# smtp_pass = "f4Gn8yBbl3jN2bNoGFXRxzpk"

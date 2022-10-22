@@ -1,0 +1,19 @@
+type = "elasticsearch"
+version = "7.10.1"
+cpu = 300
+ram = 4000
+
+[[nodeSets]] # https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-node-configuration.html
+name = "default"
+count = 1
+
+[[nodeSets.podTemplate.spec.initContainers]]
+name = "install-plugins"
+command = [
+    "/usr/share/elasticsearch/bin/elasticsearch-plugin",
+    "install",
+    "--batch",
+    "repository-azure",
+]
+
+# curl -v http://elasticsearch-es-http:9200/_cluster/health

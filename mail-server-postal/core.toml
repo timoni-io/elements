@@ -1,0 +1,6 @@
+type = "container"
+
+dockerfile = "postal/Dockerfile"
+build-root-path = "postal"
+
+run-cmd = ["sleep", "9999"]

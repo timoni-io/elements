@@ -1,0 +1,4 @@
+github.com/mileusna/crontab v1.0.1 h1:YrDLc7l3xOiznmXq2FtAgg+1YQ3yC6pfFVPe+ywXNtg=
+github.com/mileusna/crontab v1.0.1/go.mod h1:dbns64w/u3tUnGZGf8pAa76ZqOfeBX4olW4U1ZwExmc=
+syslabit.com/git/syslabit/log v0.0.0-20210130183826-31c79baea11b h1:X1/mWxyObO6mvVq8xJYr2WJFgwpyX53lov+rxLq/q3M=
+syslabit.com/git/syslabit/log v0.0.0-20210130183826-31c79baea11b/go.mod h1:Li5h6MLpssUemVEkTWyMnejndhEhfbQP73kOto2PsR4=

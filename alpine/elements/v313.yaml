@@ -1,0 +1,9 @@
+container:
+  description: Alpine Linux 3.13
+
+  build: |
+    ADD alpine-minirootfs-3.13.2-x86_64.tar.gz /
+    SHELL ["/bin/sh", "-c"]
+
+  run-cmd: [/bin/sleep, infinity]
+

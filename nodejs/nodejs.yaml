@@ -1,0 +1,10 @@
+container:
+  from:
+    git: http-static-file-server
+    branch: master
+    commit: 0050a4fc3670c83be4a876ee232ddfe319cb4f3d
+    element: http-static-file-server
+
+  build: |
+    RUN apk add nodejs npm
+    RUN npm install --global webpack

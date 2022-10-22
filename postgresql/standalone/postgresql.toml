@@ -1,0 +1,40 @@
+type = "container"
+build = """
+    FROM postgres:14.2-alpine
+    COPY update_pg_access.sh /docker-entrypoint.d
+    """
+
+run-cmd = ["docker-entrypoint.sh", "postgres"]
+
+[expose.5432]
+type = "tcp-internal"
+
+[variables]
+POSTGRES_USER = "{{PGUSER}}"
+POSTGRES_DB = "xwiki"
+PGUSER = "postgres"
+PGDATA = "/var/lib/postgresql/pgdata"
+
+[inputs]
+POSTGRES_ROOT_PASSWORD.type = "secret"
+POSTGRES_PASSWORD.type = "secret"
+
+[storage."/var/lib/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/etc/postgresql"]
+type = "block"
+max-size-mb = 500
+
+[storage."/var/log/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40

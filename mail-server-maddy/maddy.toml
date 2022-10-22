@@ -1,0 +1,51 @@
+type = "container"
+
+build = """
+FROM foxcpp/maddy:0.6.2
+ADD cert/timoni.io.crt /config/tls/fullchain.pem
+ADD cert/timoni.io.key /config/tls/privkey.pem
+ADD maddy.conf /config/maddy.conf
+ADD aliases.conf /config/aliases
+"""
+
+run-cmd = ["/bin/maddy", "-config", "/config/maddy.conf", "run"]
+
+run-writable-file-system = true
+
+[variables]
+MADDY_HOSTNAME = "mail.timoni.io"
+MADDY_DOMAIN = "timoni.io"          # {{CLUSTER_DOMAIN}}
+MADDY_CONFIG = "/config/maddy.conf"
+
+
+[expose.25]
+# SMTP
+type = "ip-external"
+probe.disable = true
+name = "maddy-external"
+
+[expose.465]
+# TLS SMTP
+type = "tcp-internal"
+probe.disable = true
+
+[expose.587]
+# STARTTLS SMTP
+type = "ip-external"
+probe.disable = true
+name = "maddy-external"
+
+[expose.143]
+# None/STARTTLS IMAP
+type = "ip-external"
+probe.disable = true
+name = "maddy-external"
+
+[expose.993]
+# TLS IMAP
+type = "tcp-internal"
+probe.disable = true
+
+[storage."/data"]
+type = "block"
+max-size-mb = 1000

@@ -1,0 +1,91 @@
+general:
+  # This can be changed to allow messages to be sent from multiple IP addresses
+  use_ip_pools: false
+
+web:
+  # The host that the management interface will be available on
+  host: "{{WEB_DOMAIN}}"
+  # The protocol that requests to the management interface should happen on
+  protocol: https
+
+web_server:
+  # Specify configuration for the Postal web server
+  # bind_address: 127.0.0.1
+  bind_address: 0.0.0.0
+  port: 5000
+
+smtp_server:
+  # Specify configuration to the Postal SMTP server
+  port: 25
+  tls_enabled: true
+
+logging:
+  # Specify options for the logging
+  stdout: true
+
+main_db:
+  # Specify the connection details for your MySQL database
+  # host: 127.0.0.1
+  # username: root
+  # password: postal
+  # database: postal
+  host: mariadb
+  # username: {{POSTAL_MAIN_DB_USERNAME}}
+  # password: {{POSTAL_MAIN_DB_PASSWORD}}
+  # database: {{POSTAL_MAIN_DB_DATABASE}}
+  username: root
+  password: postal
+  database: postal
+
+message_db:
+  # Specify the connection details for your MySQL server that will be house the
+  # message databases for mail servers.
+  # host: 127.0.0.1
+  # username: root
+  # password: postal
+  # prefix: postal
+  host: mariadb
+  # username: {{POSTAL_MAIN_DB_USERNAME}}
+  # password: {{POSTAL_MAIN_DB_PASSWORD}}
+  # prefix: {{POSTAL_MAIN_DB_DATABASE}}
+  username: root
+  password: postal
+  prefix: postal
+
+rabbitmq:
+  # Specify connection details for your RabbitMQ server
+  # host: 127.0.0.1
+  # username: postal
+  # password: postal
+  # vhost: postal
+  host: "rabbitmq" 
+  username: "{{RABBITMQ_DEFAULT_USER}}"
+  password: "{{RABBITMQ_DEFAULT_PASS}}"
+  vhost: "{{RABBITMQ_DEFAULT_VHOST}}"
+
+dns:
+  # Specify the DNS records that you have configured. Refer to the documentation at
+  # https://github.com/atech/postal/wiki/Domains-&-DNS-Configuration for further
+  # information about these.
+  mx_records:
+    - "mail.{{SMTP_DOMAIN}}"
+  smtp_server_hostname: "{{SMTP_DOMAIN}}"
+  spf_include: "_spf.{{SMTP_DOMAIN}}"
+  return_path: "rp.{{SMTP_DOMAIN}}"
+  route_domain: "routes.{{SMTP_DOMAIN}}"
+  track_domain: "track.{{SMTP_DOMAIN}}"
+
+smtp:
+  # Specify an SMTP server that can be used to send messages from the Postal management
+  # system to users. You can configure this to use a Postal mail server once the
+  # your installation has been set up.
+  host: smtp
+  port: 25
+  username: admin
+  password: PKakNuwhQCTayZUZy3RsR4XZJeLmao
+  from_name: Postal
+  from_address: "admin@{{SMTP_DOMAIN}}"
+
+rails:
+  # string unique to your installation.
+  secret_key: "Bojcie-sie!-Prosiaczek-wrocil-z-wojska!"

@@ -1,0 +1,23 @@
+type = "container"
+description = "Wiki.js"
+
+build = """
+FROM requarks/wiki:2.5
+RUN mkdir /wiki/data/cache
+RUN chmod a+rwx /wiki/data/cache
+RUN mkdir /wiki/data/uploads
+RUN chmod a+rwx /wiki/data/uploads
+"""
+run-cmd = ["node", "server"] 
+
+[variables]
+DB_TYPE = "mysql"
+DB_HOST = "mysql"
+DB_PORT = "3306"
+DB_USER = "{{mysql.MYSQLUSER}}"
+DB_PASS = "{{mysql.MYSQL_PASSWORD}}"
+DB_NAME = "{{mysql.MYSQL_DATABASE}}"
+HA_ACTIVE = "true"
+
+[expose.3306]
+type = "http-domain"

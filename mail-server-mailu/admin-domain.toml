@@ -1,0 +1,5 @@
+type = "domain"
+
+include-elements = ["admin"]
+
+names = ["admin.{{CLUSTER_DOMAIN}}"]

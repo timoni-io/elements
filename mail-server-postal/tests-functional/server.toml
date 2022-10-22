@@ -1,0 +1,9 @@
+# id = "postal"
+# name = "env-l3n5bdla1126.cs-local.syslabit.org"  # postal
+# port = 30003
+# id = "mailhog"
+# name = "env-l3sqwvkr3299.cs-local.syslabit.org"  # mailhog
+# port = 30004
+id = "mailu"
+name = "env-mail.cs-local.syslabit.org"
+port = 30007

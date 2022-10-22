@@ -1,0 +1,5 @@
+type = "domain"
+
+include-elements = ["front"]
+
+names = ["front.{{CLUSTER_DOMAIN}}"]

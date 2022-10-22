@@ -1,0 +1,31 @@
+type = "container"
+
+build = """
+FROM mysql:8.0
+"""
+
+run-cmd = ["docker-entrypoint.sh", "mysqld"]
+
+[inputs]
+MYSQL_ROOT_PASSWORD.type = "secret"
+MYSQL_PASSWORD.type = "secret"
+MYSQL_DATABASE.type = "text"
+
+[variables]
+MYSQL_USER = "myuserwiki"
+
+[expose.3306]
+type = "tcp-internal"
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 20
+
+[storage."/var/run/mysqld"]
+type = "temp"
+max-size-mb = 20
+
+[storage."/var/lib/mysql"]
+type = "block"
+max-size-mb = 1000
+

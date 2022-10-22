@@ -1,0 +1,11 @@
+container:
+  description: bazowy obraz PHP-7 + FPM + Nginx + Crond
+
+  from:
+    element: php-fpm-nginx
+
+  build: |
+      # Configure supervisord
+      COPY php-fpm-nginx/supervisord-cron.conf /etc/supervisord.conf
+
+      COPY cron/cron  /bin/cron

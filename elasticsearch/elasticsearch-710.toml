@@ -1,0 +1,11 @@
+type = "elasticsearch"
+version = "7.10.1"
+cpu = 300
+ram = 4_000
+storage = 1000
+
+[[nodeSets]] # https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-node-configuration.html
+name = "default"
+count = 1
+
+# curl -v http://elasticsearch-es-http:9200/_cluster/health

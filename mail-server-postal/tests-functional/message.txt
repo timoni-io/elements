@@ -1,0 +1,6 @@
+From: "Testek" <tete@env-l3n5bdla1126.cs-local.syslabit.org>
+To: "Admin" <admin.adminowicz@env-l3n5bdla1126.cs-local.syslabit.org>
+Subject: Testujemy wysylanie emaila
+Zażółć gęślą jaźń!
+Z pozdrowieniami
+Testek

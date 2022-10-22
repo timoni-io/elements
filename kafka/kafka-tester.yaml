@@ -1,0 +1,9 @@
+container:
+  build: |
+    FROM confluentinc/cp-kafka:4.1.2-2
+
+  run-cmd: ["sh", "-c", "exec tail -f /dev/null"]
+
+  requires:
+    kafka:
+      element: kafka
