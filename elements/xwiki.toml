@@ -12,7 +12,7 @@ run-writable-file-system = true
 [variables]
 DB_HOST = "postgresql"
 DB_PORT = "5432"
-DB_USER = "{{postgresql.PGUSER}}"
+DB_USER = "{{postgresql.POSTGRES_USER}}"
 DB_PASSWORD = "{{postgresql.POSTGRES_PASSWORD}}"
 LOG_FORMAT="%time{23} [%thread%] %level% %message%"
 DB_DATABASE = "{{postgresql.POSTGRES_DB}}"
