@@ -2,7 +2,7 @@ type = "container"
 
 build = "FROM postgres:14.2-alpine"
 run-cmd = ["docker-entrypoint.sh", "postgres"]
-
+run-writable-filesystem=true
 cpu = 200
 ram = 2000
 
