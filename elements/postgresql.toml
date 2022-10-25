@@ -1,0 +1,44 @@
+type = "container"
+
+build = "FROM postgres:14.2-alpine"
+run-cmd = ["docker-entrypoint.sh", "postgres"]
+
+cpu = 200
+ram = 2000
+
+[expose.5432]
+type = "tcp-internal"
+
+[inputs]
+POSTGRES_USER.type = "text"
+POSTGRES_USER.message = "Name of database user"
+POSTGRES_ROOT_PASSWORD.type = "secret"
+POSTGRES_ROOT_PASSWORD.message = "Password of root user"
+POSTGRES_PASSWORD.type = "secret"
+POSTGRES_PASSWORD.message = "Password of database user"
+POSTGRES_DB.type = "text"
+POSTGRES_DB.message = "Name of database"
+
+[storage."/var/lib/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/etc/postgresql"]
+type = "block"
+max-size-mb = 500
+
+[storage."/var/log/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40
+
+[storage."/backups"]
+type = "block"
+max-size-mb = 2000
