@@ -1,0 +1,32 @@
+type = "container"
+description = "X-Wiki"
+build = "FROM xwiki:14.4.1-postgres-tomcat"
+
+cpu = 400
+ram = 8000
+
+# run-cmd = ["sleep", "999999"]
+run-cmd = ["/usr/local/bin/docker-entrypoint.sh", "xwiki"]
+run-writable-file-system = true
+
+[variables]
+DB_HOST = "postgresql"
+DB_PORT = "5432"
+DB_USER = "{{postgresql.PGUSER}}"
+DB_PASSWORD = "{{postgresql.POSTGRES_PASSWORD}}"
+LOG_FORMAT="%time{23} [%thread%] %level% %message%"
+DB_DATABASE = "{{postgresql.POSTGRES_DB}}"
+PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/tomcat/bin"
+
+[expose.8080]
+type = "http-domain"
+[expose.8080.probe]
+disable = true
+
+[storage."/usr/local/xwiki/data"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/usr/local/tomcat/log"]
+type = "block"
+max-size-mb = 500
