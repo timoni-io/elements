@@ -7,7 +7,7 @@ build = """
     COPY nopcommerce/entrypoint.sh /app
     RUN mv /app/App_Data  /app/App_Data_org
     # cp -r /app/App_Data_org/* /app/App_Data
-    USER root
+    RUN chmod u+x /app/entrypoint.sh
     """
 
 run-cmd = ["/bin/sh", "-c", "/app/entrypoint.sh"]
