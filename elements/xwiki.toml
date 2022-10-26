@@ -15,7 +15,7 @@ DB_PORT = "5432"
 DB_USER = "{{postgresql.POSTGRES_USER}}"
 DB_PASSWORD = "{{postgresql.POSTGRES_PASSWORD}}"
 LOG_FORMAT="%time{23} [%thread%] %level% %message%"
-DB_DATABASE = "{{postgresql.POSTGRES_DB}}"
+DB_DATABASE = "xwiki"
 PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/tomcat/bin"
 
 [expose.8080]
