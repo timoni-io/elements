@@ -1,0 +1,10 @@
+type = "container"
+description = "Alpine Linux Edge"
+build = """
+FROM scratch
+ADD alpine/alpine-minirootfs-3.16.2-x86_64.tar.gz /
+COPY alpine/apk-repos-edge /etc/apk/repositories
+SHELL ["/bin/sh", "-c"]
+"""
+run-writable-file-system=true
+run-cmd = ["/bin/sleep", "infinity"]
