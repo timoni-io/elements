@@ -8,7 +8,7 @@ build = """
     RUN mv /app/App_Data  /app/App_Data_org
     # cp -r /app/App_Data_org/* /app/App_Data
     """
-
+run-as-user=[0]
 run-cmd = ["/bin/sh", "-c", "/app/entrypoint.sh"]
 # dotnet Nop.Web.dll
 # run-cmd = ["sleep", "999999"]
