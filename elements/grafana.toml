@@ -1,0 +1,57 @@
+type = "container"
+description = "Grafana"
+
+build = """
+    FROM grafana/grafana:8.2.6
+    USER root
+    RUN mkdir /grafana_files
+    RUN cp -r /etc/grafana /grafana_files/etc
+    RUN cp -r /var/lib/grafana /grafana_files/var
+    RUN cp -r /usr/share/grafana /grafana_files/usr
+    RUN grafana-cli plugins install grafana-piechart-panel
+"""
+
+run-cmd = [
+    "/bin/bash", "-c",
+    """
+    "cp -ruT /grafana_files/var /var/lib/grafana && 
+    cp -ruT /grafana_files/etc /etc/grafana &&
+    cp -ruT /grafana_files/usr /usr/share/grafana &&
+    rm -r /grafana_files &&
+    /run.sh"
+    """
+    ]
+run-writable-file-system = true
+
+[expose.3000]
+type = "http-domain"
+
+[inputs]
+GF_SECURITY_ADMIN_USER.type = "text"
+GF_SECURITY_ADMIN_USER.message = "Name of admin user"
+GF_SECURITY_ADMIN_PASSWORD.type = "secret"
+GF_SECURITY_ADMIN_PASSWORD.message = "Password of admin user"
+
+[storage."/etc/grafana"]
+type = "block"
+max-size-mb = 1000
+
+[storage."/var/lib/grafana"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/usr/share/grafana"]
+type = "block"
+max-size-mb = 500
+
+[storage."/var/log/grafana"]
+type = "block"
+max-size-mb = 1000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40
