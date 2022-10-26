@@ -1,0 +1,18 @@
+type = "container"
+
+build = "FROM mailhog/mailhog:v1.0.1"
+
+run-cmd = ["MailHog"]
+
+[expose.1025]
+# type = "tcp-internal"
+type = "tcp-node-port"
+probe.disable = true
+
+[expose.8025]
+# type = "tcp-internal"
+# probe.disable = true
+type = "http-domain"
+
+[variables]
+MH_HOSTNAME = "mailhog"
