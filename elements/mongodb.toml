@@ -1,0 +1,33 @@
+type = "container"
+
+build = "FROM mongo:6.0.2"
+run-cmd = ["docker-entrypoint.sh", "mongod"]
+run-writable-file-system = true
+
+cpu = 200
+ram = 2000
+
+[inputs]
+MONGO_INITDB_ROOT_USERNAME.type = "text"
+MONGO_INITDB_ROOT_USERNAME.message = "Name of root user"
+MONGO_INITDB_ROOT_PASSWORD.type = "secret"
+MONGO_INITDB_ROOT_PASSWORD.message = "Password of root user"
+MONGO_INITDB_DATABASE.type = "text"
+MONGO_INITDB_DATABASE.message = "Name of database"
+
+
+[storage."/data"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/var/log/mongodb"]
+type = "block"
+max-size-mb = 1000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40
