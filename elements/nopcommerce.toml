@@ -4,7 +4,7 @@ build = """
     FROM nopcommerceteam/nopcommerce:4.50
     RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
     #RUN apk add strace
-    COPY /entrypoint.sh /app
+    COPY nopcommerce/entrypoint.sh /app
     RUN mv /app/App_Data  /app/App_Data_org
     # cp -r /app/App_Data_org/* /app/App_Data
     """
