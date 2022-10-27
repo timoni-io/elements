@@ -18,6 +18,7 @@ run-cmd = [
     cp -ruT /grafana_files/etc /etc/grafana &&
     cp -ruT /grafana_files/usr /usr/share/grafana &&
     rm -r /grafana_files &&
+    grafana-cli admin reset-admin-password $GF_SECURITY_ADMIN_PASSWORD &&
     /run.sh"
     """
     ]
