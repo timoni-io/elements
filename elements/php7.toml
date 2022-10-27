@@ -9,7 +9,7 @@ COPY php7/php-fpm-nginx/apk-repos-edge /etc/apk/repositories
     # Install packages and remove default server definition
     RUN apk update && apk upgrade
 
-    RUN apk --no-cache add ca-certificates wget php7 php7-fpm php7-opcache php7-mysqli php7-json php7-openssl php7-curl \
+    RUN apk add php7 php7-fpm php7-opcache php7-mysqli php7-json php7-openssl php7-curl \
         php7-zlib php7-phar php7-intl php7-dom php7-xml php7-xmlreader php7-simplexml php7-ctype php7-session \
         php7-ldap php7-mbstring php7-gd php7-pecl-xdebug nginx supervisor curl mariadb-client composer py3-setuptools && \
         rm -f /etc/nginx/conf.d/default.conf && \
@@ -51,11 +51,7 @@ COPY php7/php-fpm-nginx/apk-repos-edge /etc/apk/repositories
     RUN echo 'alias env="env | sort"' >> /etc/profile
     RUN echo 'alias ll="ls -lAh --color=auto"' >> /etc/profile
 
-    RUN apk add git openssh-client
-    COPY php7/php-fpm-nginx/ssh_key                 /root/.ssh/id_rsa
-    COPY php7/php-fpm-nginx/ssh_pub                 /root/.ssh/id_rsa.pub
-    COPY php7/php-fpm-nginx/known_hosts_git.tvp.pl  /root/.ssh/known_hosts
-    RUN chmod 0600                             /root/.ssh/*
+    
     # -----------------------------------------------
 
     # Switch to use a non-root user from here on
