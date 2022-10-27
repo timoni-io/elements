@@ -1,0 +1,53 @@
+type = "container"
+
+build = "FROM roundcube/roundcubemail:1.6.0-apache"
+
+run-cmd = ["/docker-entrypoint.sh", "apache2-foreground"]
+
+run-writable-file-system = true
+
+[inputs]
+
+IMAP_SERVER.type = "text"
+IMAP_SERVER.message = "IMAP server address"
+IMAP_SERVER_PORT.type = "integer"
+IMAP_SERVER_PORT.message = "IMAP server port"
+IMAP_SERVER_PROTOCOL.type = "one-of"
+IMAP_SERVER_PROTOCOL.options = ["ssl", "tls"]
+IMAP_SERVER_PROTOCOL.message = "IMAP protocol"
+
+SMTP_SERVER.type = "text"
+SMTP_SERVER.message = "SMTP server address"
+SMTP_SERVER_PORT.type = "integer"
+SMTP_SERVER_PORT.message = "SMTP server port"
+SMTP_SERVER_PROTOCOL.type = "one-of"
+SMTP_SERVER_PROTOCOL.options = ["ssl", "tls"]
+SMTP_SERVER_PROTOCOL.message = "SMTP protocol"
+
+[variables]
+
+ROUNDCUBEMAIL_DEFAULT_HOST = "{{IMAP_SERVER_PROTOCOL}}://{{IMAP_SERVER}}]]"
+ROUNDCUBEMAIL_DEFAULT_PORT = "{{IMAP_SERVER_PORT}}"
+ROUNDCUBEMAIL_SMTP_SERVER = "{{SMTP_SERVER_PROTOCOL}}://{{SMTP_SERVER}}"
+ROUNDCUBEMAIL_SMTP_PORT = "{{SMTP_SERVER_PORT}}"
+
+[expose.80]
+type = "http-domain"
+probe.disable = true
+
+
+[storage."/var/roundcube/db"]
+type = "block"
+max-size-mb = 5000
+
+[storage."/var/www/html"]
+type = "block"
+max-size-mb = 1000
+
+[storage."/var/roundcube/config"]
+type = "block"
+max-size-mb = 1000
+
+[storage."/tmp/roundcube-temp"]
+type = "temp"
+max-size-mb = 1000
