@@ -1,0 +1,10 @@
+type = "domain"
+
+names = ["{{DOMAIN_NAME}}"]
+include-elements = ["{{SERVICE_NAME}}"]
+
+[inputs]
+SERVICE_NAME.type = "text"
+SERVICE_NAME.msg = "Name of service for which custom domain will be set"
+DOMAIN_NAME.type = "text"
+DOMAIN_NAME.msg = "Name of domain for service"
