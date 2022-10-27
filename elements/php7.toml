@@ -1,0 +1,78 @@
+type='container'
+description = "bazowy obraz php-7 + fpm + Nginx"
+run-as-user=[65534]
+run-cmd=["/usr/bin/supervisord","-c","/etc/supervisord.conf"]
+run-writable-file-system=true
+build = '''
+COPY php7/php-fpm-nginx/apk-repos-edge /etc/apk/repositories
+
+    # Install packages and remove default server definition
+    RUN apk update && apk upgrade
+
+    RUN apk --no-cache add ca-certificates wget php7 php7-fpm php7-opcache php7-mysqli php7-json php7-openssl php7-curl \
+        php7-zlib php7-phar php7-intl php7-dom php7-xml php7-xmlreader php7-simplexml php7-ctype php7-session \
+        php7-ldap php7-mbstring php7-gd php7-pecl-xdebug nginx supervisor curl mariadb-client composer py3-setuptools && \
+        rm -f /etc/nginx/conf.d/default.conf && \
+        rm -f /etc/nginx/http.d/default.conf
+
+    # Configure nginx
+    COPY php7/php-fpm-nginx/nginx.conf /etc/nginx/nginx.conf
+    COPY php7/php-fpm-nginx/fastcgi_params /etc/nginx/fastcgi_params
+
+    # Configure PHP-FPM
+    COPY php7/php-fpm-nginx/fpm-pool.conf /etc/php7/php-fpm.d/www.conf
+    COPY php7/php-fpm-nginx/php.ini /etc/php7/conf.d/custom.ini
+
+    # Configure supervisord
+    COPY php7/php-fpm-nginx/supervisord.conf /etc/supervisord.conf
+
+    # Add nginx-prometheus-exporter
+    RUN curl -LJO 'https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.9.0/nginx-prometheus-exporter_0.9.0_linux_amd64.tar.gz'
+    RUN tar -xvf nginx-prometheus-exporter_0.9.0_linux_amd64.tar.gz nginx-prometheus-exporter
+    RUN mv nginx-prometheus-exporter /usr/local/bin
+    RUN rm nginx-prometheus-exporter_0.9.0_linux_amd64.tar.gz
+
+    RUN rm -rf /run && ln -s /tmp /run
+
+    # Setup document root
+    RUN mkdir -p /app/web
+
+    # Make sure files/folders needed by the processes are accessable when they run under the nobody user
+    RUN chown -R nobody.nobody /app/web && \
+    chown -R nobody.nobody /run && \
+    chown -R nobody.nobody /var/lib/nginx && \
+    chown -R nobody.nobody /var/log/nginx
+
+    # fix logs
+    RUN rm -rf /var/log/nginx  /var/lib/nginx/logs
+    RUN ln -sf /tmp /var/lib/nginx/logs
+
+    # aliases
+    RUN echo 'alias env="env | sort"' >> /etc/profile
+    RUN echo 'alias ll="ls -lAh --color=auto"' >> /etc/profile
+
+    
+    # -----------------------------------------------
+
+    # Switch to use a non-root user from here on
+    USER nobody
+
+    # Add application
+    COPY --chown=nobody php7/php-fpm-nginx/www/ /app/web/
+    WORKDIR /app/web
+
+    # Configure a healthcheck to validate that everything is up&running
+    HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
+    '''
+[from]
+toml-file='alpine'
+[expose.8080]
+type='http-domain'
+[expose.9113]
+type='http-internal'
+paths=['/metrics']
+[expose.9113.probe]
+disable=true
+[storage.'/tmp']
+type='temp'
+max-size-mb=500
