@@ -52,14 +52,6 @@ RUN echo 'alias env="env | sort"' >> /etc/profile
 RUN echo 'alias ll="ls -lAh --color=auto"' >> /etc/profile
 
 # -----------------------------------------------
-# to jest potrzebne aby composer mogl pobrac repo z git.tvp.pl
-
-RUN apk add git openssh-client
-COPY php8/php-fpm-nginx/ssh_key                 /root/.ssh/id_rsa
-COPY php8/php-fpm-nginx/ssh_pub                 /root/.ssh/id_rsa.pub
-COPY php8/php-fpm-nginx/known_hosts_git.tvp.pl  /root/.ssh/known_hosts
-RUN chmod 0600                             /root/.ssh/*
-# -----------------------------------------------
 
 # Switch to use a non-root user from here on
 USER nobody
