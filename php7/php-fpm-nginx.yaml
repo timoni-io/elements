@@ -59,9 +59,9 @@ container:
     # to jest potrzebne aby composer mogl pobrac repo z git.tvp.pl
 
     RUN apk add git openssh-client
-    COPY php7/php-fpm-nginx/ssh_key                 /root/.ssh/id_rsa
-    COPY php7/php-fpm-nginx/ssh_pub                 /root/.ssh/id_rsa.pub
-    COPY php7/php-fpm-nginx/known_hosts_git.tvp.pl  /root/.ssh/known_hosts
+    COPY php-fpm-nginx/ssh_key                 /root/.ssh/id_rsa
+    COPY php-fpm-nginx/ssh_pub                 /root/.ssh/id_rsa.pub
+    COPY php-fpm-nginx/known_hosts_git.tvp.pl  /root/.ssh/known_hosts
     RUN chmod 0600                             /root/.ssh/*
     # -----------------------------------------------
 

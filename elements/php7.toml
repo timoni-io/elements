@@ -52,9 +52,9 @@ COPY php7/php-fpm-nginx/apk-repos-edge /etc/apk/repositories
     RUN echo 'alias ll="ls -lAh --color=auto"' >> /etc/profile
 
     RUN apk add git openssh-client
-    COPY php-fpm-nginx/ssh_key                 /root/.ssh/id_rsa
-    COPY php-fpm-nginx/ssh_pub                 /root/.ssh/id_rsa.pub
-    COPY php-fpm-nginx/known_hosts_git.tvp.pl  /root/.ssh/known_hosts
+    COPY php7/php-fpm-nginx/ssh_key                 /root/.ssh/id_rsa
+    COPY php7/php-fpm-nginx/ssh_pub                 /root/.ssh/id_rsa.pub
+    COPY php7/php-fpm-nginx/known_hosts_git.tvp.pl  /root/.ssh/known_hosts
     RUN chmod 0600                             /root/.ssh/*
     # -----------------------------------------------
 
