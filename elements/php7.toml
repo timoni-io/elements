@@ -1,10 +1,10 @@
 type='container'
 description = "bazowy obraz php-7 + fpm + Nginx"
-run-as-user=[65534]
+run-as-user=[0]
 run-cmd=["/usr/bin/supervisord","-c","/etc/supervisord.conf"]
 run-writable-file-system=true
 build = '''
-COPY php7/php-fpm-nginx/apk-repos-edge /etc/apk/repositories
+    COPY php7/php-fpm-nginx/apk-repos-edge /etc/apk/repositories
 
     # Install packages and remove default server definition
     RUN apk update && apk upgrade
