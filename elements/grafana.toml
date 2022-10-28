@@ -4,8 +4,8 @@ description = "Grafana"
 build = """
     FROM grafana/grafana:8.2.6
     USER root
-    COPY /grafana/provisioning /etc/grafana/provisioning
-    COPY /grafana/dashboards /etc/grafana/dashboards
+    ADD grafana/provisioning /etc/grafana/provisioning
+    ADD grafana/dashboards /etc/grafana/dashboards
     RUN mkdir /grafana_files
     RUN cp -r /etc/grafana /grafana_files/etc
     RUN cp -r /var/lib/grafana /grafana_files/var
