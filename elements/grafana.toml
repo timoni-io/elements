@@ -6,6 +6,7 @@ build = """
     USER root
     ADD grafana/provisioning /etc/grafana/provisioning
     ADD grafana/dashboards /etc/grafana/dashboards
+    ADD grafana/grafana.ini /etc/grafana
     RUN mkdir /grafana_files
     RUN cp -r /etc/grafana /grafana_files/etc
     RUN cp -r /var/lib/grafana /grafana_files/var
@@ -34,6 +35,9 @@ GF_SECURITY_ADMIN_USER.type = "text"
 GF_SECURITY_ADMIN_USER.message = "Name of admin user"
 GF_SECURITY_ADMIN_PASSWORD.type = "secret"
 GF_SECURITY_ADMIN_PASSWORD.message = "Password of admin user"
+
+[variables]
+PATH = "/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [storage."/etc/grafana"]
 type = "block"
