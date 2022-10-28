@@ -4,5 +4,5 @@ datasources:
 - name: prometheus
   type: prometheus
   access: proxy
-  url: http://vmselect-vmcluster-persistent.rekuber-metrics.svc:8481/select/0/prometheus
+  url: http://vmselect-vmcluster-persistent.timoni-metrics.svc:8481/select/0/prometheus
   isDefault: true
