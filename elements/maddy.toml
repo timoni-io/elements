@@ -1,0 +1,50 @@
+type = "container"
+
+build = """
+FROM foxcpp/maddy:0.6.2
+"""
+
+run-cmd = ["/bin/maddy", "-config", "/config/maddy.conf", "run"]
+
+run-writable-file-system = true
+
+[inputs]
+MADDY_HOSTNAME.type = "text"
+MADDY_HOSTNAME.message = "Hostname of maddy server"
+MADDY_DOMAIN.type = "text"
+MADDY_DOMAIN.message = "Domain the server is handling messages for."
+
+[variables]
+MADDY_CONFIG = "/config/maddy.conf"
+
+[expose.25]
+# SMTP
+type = "ip-external"
+probe.disable = true
+name = "maddy-external"
+
+[expose.465]
+# TLS SMTP
+type = "tcp-internal"
+probe.disable = true
+
+[expose.587]
+# STARTTLS SMTP
+type = "ip-external"
+probe.disable = true
+name = "maddy-external"
+
+[expose.143]
+# None/STARTTLS IMAP
+type = "ip-external"
+probe.disable = true
+name = "maddy-external"
+
+[expose.993]
+# TLS IMAP
+type = "tcp-internal"
+probe.disable = true
+
+[storage."/data"]
+type = "block"
+max-size-mb = 1000
