@@ -1,0 +1,20 @@
+type="container"
+build='''
+    FROM rabbitmq:management
+'''
+run-cmd=["docker-entrypoint.sh","rabbitmq-server"]
+run-writable-file-system=true
+[variables]
+RABBITMQ_DEFAULT_USER="{{RABBITMQ_USER}}"
+RABBITMQ_DEFAULT_PASS="{{RABBITMQ_PASSWORD}}"
+[inputs]
+RABBITMQ_USER.type="text"
+RABBITMQ_PASSWORD.type="text"
+[storage.'/var/lib/rabbitmq']
+type='block'
+max-size-mb=1000
+[expose.15672]
+type='http-domain'
+[expose.5672]
+type='tcp-internal'
+probe.disable=true
