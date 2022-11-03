@@ -1,0 +1,34 @@
+type = "container"
+description = "Cypress"
+
+build = """FROM cypress/included:10.11.0
+    RUN mkdir /tmp/cypress-logs
+    WORKDIR /home/node/tests
+    """
+run-writable-file-system = true
+run-cmd = [ "/bin/bash", "-c",
+    """
+    "git clone https://$GIT_USERNAME:$GIT_TOKEN@$GIT_REPO_URL . &&
+    while true ;
+    do export LOG_FILE=`date +%Y%m%d%H%M%S` ; cypress run --config baseUrl=$SITE_URL | tee -a $LOG_DEST/$LOG_FILE ; sleep 60 ;
+    done"
+    """
+    ]
+
+[variables]
+LOG_DEST = "/tmp/cypress-logs"
+LOG_FILE = "`date +%Y%m%d%H%M%S`"
+
+[inputs]
+SITE_URL.type = "text"
+SITE_URL.message = "Specify URL of the site that will be tested"
+GIT_REPO_URL.type = "text"
+GIT_REPO_URL.message = "Specify URL (without protocol) of git repo with tests"
+GIT_USERNAME.type = "text"
+GIT_USERNAME.message = "Specify git user login"
+GIT_TOKEN.type = "secret"
+GIT_TOKEN.message = "Specify git user token"
+
+[storage."/tmp/cypress-logs"]
+type = "block"
+max-size-mb = 4000
