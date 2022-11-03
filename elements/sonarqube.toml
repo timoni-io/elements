@@ -1,0 +1,39 @@
+type = "container"
+description = "Sonarqube"
+
+build = """
+    FROM sonarqube:9.7.1-community
+    USER root
+    RUN mkdir /home/sonarqube/sonarqube_files
+    RUN cp -r /opt/sonarqube/data /home/sonarqube/sonarqube_files/data
+    RUN cp -r /opt/sonarqube/extensions /home/sonarqube/sonarqube_files/extensions
+    RUN cp -r /opt/sonarqube/logs /home/sonarqube/sonarqube_files/logs
+    RUN chown -R sonarqube /home/sonarqube/sonarqube_files
+    RUN chgrp -R sonarqube /home/sonarqube/sonarqube_files
+    """
+run-writable-file-system = true
+run-as-user = [1000]
+run-cmd = [ "/bin/bash", "-c",
+    """
+    "cp -ruT /home/sonarqube/sonarqube_files/data /opt/sonarqube/data && 
+    cp -ruT /home/sonarqube/sonarqube_files/extensions /opt/sonarqube/extensions &&
+    cp -ruT /home/sonarqube/sonarqube_files/logs /opt/sonarqube/logs &&
+    rm -rf /home/sonarqube/sonarqube_files &&
+    /opt/sonarqube/bin/sonar.sh"
+    """
+    ]
+
+[expose.9000]
+type = "http-domain"
+
+[storage."/opt/sonarqube/data"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/opt/sonarqube/extensions"]
+type = "block"
+max-size-mb = 1000
+
+[storage."/opt/sonarqube/logs"]
+type = "block"
+max-size-mb = 1000
