@@ -1,0 +1,16 @@
+type='container'
+build='''
+FROM node:8.11.0-wheezy
+WORKDIR /regexr
+RUN wget https://github.com/gskinner/regexr/archive/refs/tags/3.3.tar.gz
+RUN tar -xzvf 3.3.tar.gz
+WORKDIR /regexr/regexr-3.3
+RUN npm install
+RUN npm install --global gulp-cli
+
+'''
+run-writable-file-system=true
+run-cmd=['gulp']
+
+[expose.3000]
+type='http-domain'
