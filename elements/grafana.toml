@@ -31,8 +31,6 @@ run-writable-file-system = true
 type = "http-domain"
 
 [inputs]
-GF_SECURITY_ADMIN_USER.type = "text"
-GF_SECURITY_ADMIN_USER.message = "Name of admin user"
 GF_SECURITY_ADMIN_PASSWORD.type = "secret"
 GF_SECURITY_ADMIN_PASSWORD.message = "Password of admin user"
 
