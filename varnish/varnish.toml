@@ -1,15 +1,19 @@
 type='container'
+
 build='''
 FROM varnish:latest
 COPY varnish/default.vcl /etc/varnish/
 '''
+
 run-cmd=['/usr/local/bin/docker-varnish-entrypoint']
+
 [storage.'/var/lib/varnish']
 type='temp'
 max-size-mb=100
+
 [expose.80]
 type='http-domain'
+
 [expose.8443]
 type='tcp-internal'
-[expose.8443.probe]
-disable=true
+probe.disable=true

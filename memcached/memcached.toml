@@ -10,15 +10,18 @@ build='''
 
     COPY memcached/supervisord.conf /etc/supervisord.conf
 '''
+
 run-cmd=["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 run-writable-file-system=true
+
 [expose.11211]
 type='tcp-internal'
+
 [expose.9150]
 type='http-internal'
 paths=['/metrics']
-[expose.9150.probe]
-disable=true
+probe.disable=true
+
 [storage.'/tmp']
 type='temp'
 max-size-mb = 10
