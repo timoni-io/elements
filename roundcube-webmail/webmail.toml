@@ -16,7 +16,7 @@ ROUNDCUBEMAIL_DB_TYPE = "sqlite"
 # ROUNDCUBEMAIL_DEFAULT_HOST = "tls://maddy.{{ENV_ID}}.svc"
 
 [expose.80]
-type = "http-domain"
+type = "http"
 probe.disable = true
 
 # [storage."/var/roundcube/config"]

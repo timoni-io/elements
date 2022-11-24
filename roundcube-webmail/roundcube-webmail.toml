@@ -24,7 +24,7 @@ ROUNDCUBEMAIL_SMTP_SERVER = "{{SMTP_SERVER_PROTOCOL}}://{{SMTP_SERVER}}"
 ROUNDCUBEMAIL_SMTP_PORT = "{{SMTP_SERVER_PORT}}"
 
 [expose.80]
-type = "http-domain"
+type = "http"
 probe.disable = true
 
 

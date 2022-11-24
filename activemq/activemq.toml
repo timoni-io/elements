@@ -24,7 +24,7 @@ ACTIVEMQ_ADMIN_LOGIN.type = "text"
 ACTIVEMQ_ADMIN_PASSWORD.type = "secret"
 
 [expose.8161]
-type = "http-domain"
+type = "http"
 
 [expose.1883]
 type = "tcp-internal"

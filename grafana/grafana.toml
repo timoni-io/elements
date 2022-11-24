@@ -20,6 +20,6 @@ PATH = "/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 GF_SECURITY_ADMIN_PASSWORD.type = "secret"
 
 [expose.3000]
-type = "http-domain"
+type = "http"
 
 

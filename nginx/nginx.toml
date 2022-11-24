@@ -4,4 +4,4 @@ run-cmd=["/docker-entrypoint.sh", "nginx -g 'daemon off;'"]
 run-writable-file-system = true
 
 [expose.80]
-type = "http-domain"
+type = "http"

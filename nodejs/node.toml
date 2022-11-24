@@ -10,4 +10,4 @@ run-writable-file-system = true
 run-cmd = ["docker-entrypoint.sh","node", "index-1.js"]
 
 [expose.3000]
-type = "http-domain"
+type = "http"

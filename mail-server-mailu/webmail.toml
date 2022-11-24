@@ -46,7 +46,7 @@ DB_HOST = "{{config.DB_HOST}}"
 DB_NAME = "{{config.DB_NAME}}"
 
 [expose.80]
-type = "http-domain"
+type = "http"
 probe.disable = true
 [expose.443]
 type = "proxy"

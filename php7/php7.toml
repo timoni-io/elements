@@ -67,7 +67,7 @@ build = '''
 [from]
 toml-file='alpine'
 [expose.8080]
-type='http-domain'
+type='http'
 [expose.9113]
 type='http-internal'
 paths=['/metrics']

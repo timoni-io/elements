@@ -12,4 +12,4 @@ run-cmd = [ "/usr/local/bin/kibana-docker" ]
 ELASTICSEARCH_HOSTS = "http://elasticsearch-es-http:9200"
 
 [expose.5601]
-type = "http-domain"
+type = "http"

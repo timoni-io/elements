@@ -17,4 +17,4 @@ type = "block"
 max-size-mb = 6000
 
 [expose.80]
-type = "http-domain"
+type = "http"

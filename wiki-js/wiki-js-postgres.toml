@@ -22,4 +22,4 @@ DB_NAME = "{{postgresql.POSTGRES_DB}}"
 HA_ACTIVE = "true"
 
 [expose.3000]
-type = "http-domain"
+type = "http"

@@ -12,8 +12,6 @@ type = "tcp-internal"
 POSTGRES_USER = "{{PGUSER}}"
 PGUSER = "postgres"
 PGDATA = "/var/lib/postgresql/pgdata"
-
-[inputs]
 POSTGRES_ROOT_PASSWORD.type = "secret"
 POSTGRES_PASSWORD.type = "secret"
 POSTGRES_DB.type = "text"

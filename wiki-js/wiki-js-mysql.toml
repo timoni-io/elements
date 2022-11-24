@@ -20,4 +20,4 @@ DB_NAME = "{{mysql.MYSQL_DATABASE}}"
 HA_ACTIVE = "true"
 
 [expose.3306]
-type = "http-domain"
+type = "http"

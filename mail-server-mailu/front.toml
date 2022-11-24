@@ -57,7 +57,7 @@ DB_NAME = "{{config.DB_NAME}}"
 
 # Web interface ports
 [expose.80]
-type = "http-domain"
+type = "http"
 probe.disable = true
 
 [expose.443]

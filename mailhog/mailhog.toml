@@ -12,7 +12,7 @@ probe.disable = true
 [expose.8025]
 # type = "tcp-internal"
 # probe.disable = true
-type = "http-domain"
+type = "http"
 
 [variables]
 MH_HOSTNAME = "mailhog"

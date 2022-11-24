@@ -13,4 +13,4 @@ run-writable-file-system=true
 run-cmd=['gulp']
 
 [expose.3000]
-type='http-domain'
+type='http'

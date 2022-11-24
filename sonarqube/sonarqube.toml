@@ -24,7 +24,7 @@ run-cmd = [ "/bin/bash", "-c",
     ]
 
 [expose.9000]
-type = "http-domain"
+type = "http"
 
 [storage."/opt/sonarqube/data"]
 type = "block"

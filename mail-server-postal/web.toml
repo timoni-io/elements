@@ -23,7 +23,7 @@ SMTP_DOMAIN = "{{config.SMTP_DOMAIN}}"
 WEB_DOMAIN = "{{config.WEB_DOMAIN}}"
 
 [expose.5000]
-type = "http-domain"
+type = "http"
 probe.disable = true
 
 [actions]

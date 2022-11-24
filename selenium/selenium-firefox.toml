@@ -11,10 +11,8 @@ SE_VNC_NO_PASSWORD = "1"
 
 
 [expose.4444]
-type = "http-domain"
-target-domains = ['custom-domain']
+type = "http"
 
 [expose.7900]
-type = "http-domain"
-target-domains = ['custom-domain-vnc']
+type = "http"
 probe.disable = true

@@ -5,7 +5,7 @@ build='''
 run-cmd=['/entrypoint.sh','arangod']
 run-writable-file-system=true
 [expose.8529]
-type='http-domain'
+type='http'
 [storage.'/var/lib/arangodb3']
 type='block'
 max-size-mb=1000

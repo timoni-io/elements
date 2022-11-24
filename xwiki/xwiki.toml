@@ -19,7 +19,7 @@ DB_DATABASE = "{{postgresql.POSTGRES_DB}}"
 PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/tomcat/bin"
 
 [expose.8080]
-type = "http-domain"
+type = "http"
 [expose.8080.probe]
 disable = true
 

@@ -9,4 +9,4 @@ run-as-user = [1000] # cerebro
 run-cmd = ["/opt/cerebro/bin/cerebro"]
 
 [expose.9000]
-type = "http-domain"
+type = "http"

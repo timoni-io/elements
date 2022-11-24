@@ -24,7 +24,7 @@ INIT_DATA_SOURCEDIR = "/app/App_Data_org"
 INIT_DATA_DESTDIR = "/app/App_Data"
 
 [expose.80]
-type = "http-domain"
+type = "http"
 probe.disable = true
 
 [storage."/app/App_Data"]
