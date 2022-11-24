@@ -21,9 +21,7 @@ ram = 1000
 
 [variables]
 ACTIVEMQ_ADMIN_LOGIN.type = "text"
-ACTIVEMQ_ADMIN_LOGIN.message = "Login for admin user"
 ACTIVEMQ_ADMIN_PASSWORD.type = "secret"
-ACTIVEMQ_ADMIN_PASSWORD.message = "Password for admin user"
 
 [expose.8161]
 type = "http-domain"

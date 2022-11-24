@@ -10,9 +10,7 @@ run-writable-file-system = true
 
 [variables]
 MADDY_HOSTNAME.type = "text"
-MADDY_HOSTNAME.message = "Hostname of maddy server"
 MADDY_DOMAIN.type = "text"
-MADDY_DOMAIN.message = "Domain the server is handling messages for."
 MADDY_CONFIG = "/config/maddy.conf"
 
 [expose.25]

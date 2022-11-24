@@ -11,13 +11,9 @@ type = "tcp-internal"
 
 [variables]
 POSTGRES_USER.type = "text"
-POSTGRES_USER.message = "Name of database user"
 POSTGRES_ROOT_PASSWORD.type = "secret"
-POSTGRES_ROOT_PASSWORD.message = "Password of root user"
 POSTGRES_PASSWORD.type = "secret"
-POSTGRES_PASSWORD.message = "Password of database user"
 POSTGRES_DB.type = "text"
-POSTGRES_DB.message = "Name of database"
 
 [storage."/var/lib/postgresql"]
 type = "block"

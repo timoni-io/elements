@@ -18,16 +18,10 @@ run-cmd = [ "/bin/bash", "-c",
 [variables]
 LOG_DEST = "/tmp/cypress-logs"
 LOG_FILE = "`date +%Y%m%d%H%M%S`"
-
-[variables]
 SITE_URL.type = "text"
-SITE_URL.message = "Specify URL of the site that will be tested"
 GIT_REPO_URL.type = "text"
-GIT_REPO_URL.message = "Specify URL (without protocol) of git repo with tests"
 GIT_USERNAME.type = "text"
-GIT_USERNAME.message = "Specify git user login"
 GIT_TOKEN.type = "secret"
-GIT_TOKEN.message = "Specify git user token"
 
 [storage."/tmp/cypress-logs"]
 type = "block"

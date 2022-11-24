@@ -32,9 +32,6 @@ type = "http-domain"
 
 [variables]
 GF_SECURITY_ADMIN_PASSWORD.type = "secret"
-GF_SECURITY_ADMIN_PASSWORD.message = "Password of admin user"
-
-[variables]
 PATH = "/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [storage."/etc/grafana"]

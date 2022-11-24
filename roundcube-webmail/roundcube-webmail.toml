@@ -9,20 +9,14 @@ run-writable-file-system = true
 [variables]
 
 IMAP_SERVER.type = "text"
-IMAP_SERVER.message = "IMAP server address"
 IMAP_SERVER_PORT.type = "integer"
-IMAP_SERVER_PORT.message = "IMAP server port"
 IMAP_SERVER_PROTOCOL.type = "one-of"
 IMAP_SERVER_PROTOCOL.options = ["ssl", "tls"]
-IMAP_SERVER_PROTOCOL.message = "IMAP protocol"
 
 SMTP_SERVER.type = "text"
-SMTP_SERVER.message = "SMTP server address"
 SMTP_SERVER_PORT.type = "integer"
-SMTP_SERVER_PORT.message = "SMTP server port"
 SMTP_SERVER_PROTOCOL.type = "one-of"
 SMTP_SERVER_PROTOCOL.options = ["ssl", "tls"]
-SMTP_SERVER_PROTOCOL.message = "SMTP protocol"
 
 ROUNDCUBEMAIL_DEFAULT_HOST = "{{IMAP_SERVER_PROTOCOL}}://{{IMAP_SERVER}}]]"
 ROUNDCUBEMAIL_DEFAULT_PORT = "{{IMAP_SERVER_PORT}}"

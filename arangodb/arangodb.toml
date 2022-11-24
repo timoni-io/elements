@@ -13,6 +13,5 @@ max-size-mb=1000
 type='block'
 max-size-mb=1000
 [variables]
-ARANGO_ROOT_PASSWORD.message="ArangoDB root password"
 ARANGO_ROOT_PASSWORD.type = "secret"
 

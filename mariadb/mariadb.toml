@@ -9,11 +9,8 @@ type ="tcp-internal"
 
 [variables]
 MARIADB_USER.type = "text"
-MARIADB_USER.message = "Name of database user"
 MARIADB_PASSWORD.type = "secret"
-MARIADB_PASSWORD.message = "Password or user"
 MARIADB_ROOT_PASSWORD.type = "secret"
-MARIADB_ROOT_PASSWORD.message = "Password of root user"
 
 [storage."/var/lib/mysql"]
 type = "block"

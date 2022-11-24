@@ -7,15 +7,10 @@ run-writable-file-system = true
 
 [variables]
 WORDPRESS_DB_HOST.type = "text"
-WORDPRESS_DB_HOST.message = "Host of database server"
 WORDPRESS_DB_USER.type = "text"
-WORDPRESS_DB_USER.message = "Name of database user"
 WORDPRESS_DB_PASSWORD.type = "secret"
-WORDPRESS_DB_PASSWORD.message = "Password of database user"
 WORDPRESS_DB_NAME.type = "text"
-WORDPRESS_DB_NAME.message = "Name of database"
 WORDPRESS_TABLE_PREFIX.type = "text"
-WORDPRESS_TABLE_PREFIX.message = "Table prefix for wordpress in database"
 
 [storage."/var/www/html"]
 type = "block"
