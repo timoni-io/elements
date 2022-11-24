@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 from.toml-file = "core"
 build = """

@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build ="FROM mariadb"
 run-cmd=["docker-entrypoint.sh","mariadbd"]
@@ -7,7 +7,7 @@ run-writable-file-system=true
 [expose.3306]
 type ="tcp-internal"
 
-[inputs]
+[variables]
 MARIADB_USER.type = "text"
 MARIADB_USER.message = "Name of database user"
 MARIADB_PASSWORD.type = "secret"

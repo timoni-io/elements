@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = """
     FROM webcenter/activemq:5.14.3
@@ -19,7 +19,7 @@ run-writable-file-system = true
 
 ram = 1000
 
-[inputs]
+[variables]
 ACTIVEMQ_ADMIN_LOGIN.type = "text"
 ACTIVEMQ_ADMIN_LOGIN.message = "Login for admin user"
 ACTIVEMQ_ADMIN_PASSWORD.type = "secret"

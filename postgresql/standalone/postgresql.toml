@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 build = """
     FROM postgres:14.2-alpine
     COPY update_pg_access.sh /docker-entrypoint.d
@@ -15,7 +15,7 @@ POSTGRES_DB = "xwiki"
 PGUSER = "postgres"
 PGDATA = "/var/lib/postgresql/pgdata"
 
-[inputs]
+[variables]
 POSTGRES_ROOT_PASSWORD.type = "secret"
 POSTGRES_PASSWORD.type = "secret"
 

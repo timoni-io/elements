@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 description = "Cypress"
 
 build = """FROM cypress/included:10.11.0
@@ -19,7 +19,7 @@ run-cmd = [ "/bin/bash", "-c",
 LOG_DEST = "/tmp/cypress-logs"
 LOG_FILE = "`date +%Y%m%d%H%M%S`"
 
-[inputs]
+[variables]
 SITE_URL.type = "text"
 SITE_URL.message = "Specify URL of the site that will be tested"
 GIT_REPO_URL.type = "text"

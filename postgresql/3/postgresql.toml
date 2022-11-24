@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = "FROM postgres:14.2-alpine"
 

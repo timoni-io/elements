@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 description = "Selenium firefox"
 
 build = "FROM selenium/standalone-firefox:4.5.3-20221024"

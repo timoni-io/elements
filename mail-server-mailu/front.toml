@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = "FROM mailu/nginx:1.8"
 

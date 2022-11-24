@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = "FROM redis"
 run-cmd = ["docker-entrypoint.sh", "redis-server"]

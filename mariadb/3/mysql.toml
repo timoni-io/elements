@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = """
 FROM mysql:8.0
@@ -6,12 +6,10 @@ FROM mysql:8.0
 
 run-cmd = ["docker-entrypoint.sh", "mysqld"]
 
-[inputs]
+[variables]
 MYSQL_ROOT_PASSWORD.type = "secret"
 MYSQL_PASSWORD.type = "secret"
 MYSQL_DATABASE.type = "text"
-
-[variables]
 MYSQL_USER = "myuserwiki"
 
 [expose.3306]

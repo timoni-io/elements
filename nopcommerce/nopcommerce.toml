@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = """
     FROM nopcommerceteam/nopcommerce:4.50.4

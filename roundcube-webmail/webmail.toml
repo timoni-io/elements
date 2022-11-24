@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = "FROM roundcube/roundcubemail:1.6.0-apache"
 
@@ -6,16 +6,14 @@ run-cmd = ["/docker-entrypoint.sh", "apache2-foreground"]
 
 run-writable-file-system = true
 
-# [inputs]
-# ENV_ID.type = "text"
-# ROUNDCUBEMAIL_DEFAULT_HOST = "tls://maddy.{{ENV_ID}}.svc"
-
 [variables]
 ROUNDCUBEMAIL_DEFAULT_HOST = "tls://mail.timoni.io"
 ROUNDCUBEMAIL_DEFAULT_PORT = "143"
 ROUNDCUBEMAIL_SMTP_SERVER = "tls://mail.timoni.io"
 ROUNDCUBEMAIL_SMTP_PORT = "587"
 ROUNDCUBEMAIL_DB_TYPE = "sqlite"
+# ENV_ID.type = "text"
+# ROUNDCUBEMAIL_DEFAULT_HOST = "tls://maddy.{{ENV_ID}}.svc"
 
 [expose.80]
 type = "http-domain"

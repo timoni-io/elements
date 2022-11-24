@@ -1,4 +1,4 @@
-type='container'
+type='pod'
 build='''
     FROM ubuntu/squid:latest
     COPY squid/squid.conf /etc/squid/squid.conf

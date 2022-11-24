@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = """
     FROM mcr.microsoft.com/mssql/server:2019-CU16-GDR1-ubuntu-20.04

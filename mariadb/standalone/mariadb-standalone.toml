@@ -1,5 +1,5 @@
 description = "mariadb standalone server base on Alpine"
-type = "container"
+type = "pod"
 
 build = """
 COPY standalone/apk-repos /etc/apk/repositories

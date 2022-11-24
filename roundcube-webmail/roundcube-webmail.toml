@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = "FROM roundcube/roundcubemail:1.6.0-apache"
 
@@ -6,7 +6,7 @@ run-cmd = ["/docker-entrypoint.sh", "apache2-foreground"]
 
 run-writable-file-system = true
 
-[inputs]
+[variables]
 
 IMAP_SERVER.type = "text"
 IMAP_SERVER.message = "IMAP server address"
@@ -23,8 +23,6 @@ SMTP_SERVER_PORT.message = "SMTP server port"
 SMTP_SERVER_PROTOCOL.type = "one-of"
 SMTP_SERVER_PROTOCOL.options = ["ssl", "tls"]
 SMTP_SERVER_PROTOCOL.message = "SMTP protocol"
-
-[variables]
 
 ROUNDCUBEMAIL_DEFAULT_HOST = "{{IMAP_SERVER_PROTOCOL}}://{{IMAP_SERVER}}]]"
 ROUNDCUBEMAIL_DEFAULT_PORT = "{{IMAP_SERVER_PORT}}"

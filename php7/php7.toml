@@ -1,4 +1,4 @@
-type='container'
+type='pod'
 description = "bazowy obraz php-7 + fpm + Nginx"
 run-as-user=[65534]
 run-cmd=["/usr/bin/supervisord","-c","/etc/supervisord.conf"]

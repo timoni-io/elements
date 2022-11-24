@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = """
 FROM ghcr.io/postalserver/postal:2.1.1

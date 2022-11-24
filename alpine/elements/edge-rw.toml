@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 description = "Alpine Linux Edge"
 
 build = """

@@ -1,11 +1,11 @@
-type = "container"
+type = "pod"
 
 build = "FROM wordpress:6"
 run-cmd = [ "/usr/local/bin/docker-entrypoint.sh", "apache2-foreground" ]
 run-writable-file-system = true
 
 
-[inputs]
+[variables]
 WORDPRESS_DB_HOST.type = "text"
 WORDPRESS_DB_HOST.message = "Host of database server"
 WORDPRESS_DB_USER.type = "text"

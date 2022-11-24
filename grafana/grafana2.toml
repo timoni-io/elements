@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 description = "Grafana"
 
 build = """
@@ -30,7 +30,7 @@ run-writable-file-system = true
 [expose.3000]
 type = "http-domain"
 
-[inputs]
+[variables]
 GF_SECURITY_ADMIN_PASSWORD.type = "secret"
 GF_SECURITY_ADMIN_PASSWORD.message = "Password of admin user"
 

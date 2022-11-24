@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 description = "Kibana"
 
 build = "FROM docker.elastic.co/kibana/kibana:8.4.1"

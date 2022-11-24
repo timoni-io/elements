@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 description = "Browserless Chrome"
 
 build = "FROM browserless/chrome:1.56.0-puppeteer-18.0.5"

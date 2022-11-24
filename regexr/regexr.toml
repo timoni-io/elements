@@ -1,4 +1,4 @@
-type='container'
+type='pod'
 build='''
 FROM node:8.11.0-wheezy
 WORKDIR /regexr

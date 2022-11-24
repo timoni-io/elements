@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 
 build = "FROM mailhog/mailhog:v1.0.1"
 

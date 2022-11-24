@@ -1,4 +1,4 @@
-type = "container"
+type = "pod"
 description = "JMeter"
 
 build = "FROM justb4/jmeter:5.5"
