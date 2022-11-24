@@ -1,0 +1,14 @@
+type = "pod"
+dockerfile = '/python/.timoni-docker-file'
+run-cmd = ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+run-writable-file-system = true
+
+[variables]
+PYTHONDONTWRITEBYTECODE = "1"
+PYTHONUNBUFFERED = "1"
+POSTGRES_NAME = "{{postgres.POSTGRES_DB}}"
+POSTGRES_USER = "{{postgres.POSTGRES_USER}}"
+POSTGRES_PASSWORD = "{{postgres.POSTGRES_PASSWORD}}"
+
+[expose.8000]
+type = 'http'
