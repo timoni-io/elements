@@ -6,9 +6,9 @@ build = """
 
     RUN grafana-cli plugins install grafana-piechart-panel
 
-    COPY grafana.ini /etc/grafana
-    COPY provisioning /etc/grafana/provisioning
-    COPY dashboards /etc/grafana/dashboards
+    COPY grafana/grafana.ini /etc/grafana
+    COPY grafana/provisioning /etc/grafana/provisioning
+    COPY grafana/dashboards /etc/grafana/dashboards
 """
 
 run-cmd = ["/run.sh"]
