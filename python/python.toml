@@ -5,7 +5,7 @@ run-writable-file-system = true
 
 [build]
 type = "dockerfile"
-dockerfile-path = '/python/.timoni-docker-file'
+dockerfile = '/python/.timoni-docker-file'
 
 
 [variables]
