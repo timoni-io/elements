@@ -27,23 +27,23 @@ ACTIVEMQ_ADMIN_PASSWORD.type = "secret"
 type = "http"
 
 [expose.1883]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 [expose.5672]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 [expose.61613]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 [expose.61614]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 [expose.61616]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 [storage."/data/activemq"]

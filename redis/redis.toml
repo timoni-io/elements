@@ -5,7 +5,7 @@ run-cmd = ["docker-entrypoint.sh", "redis-server"]
 run-writable-file-system=true
 
 [expose.6379]
-type = "tcp-internal"
+type = "tcp"
 
 [storage."/tmp"]
 type = "block"

@@ -46,10 +46,10 @@ DB_HOST = "{{config.DB_HOST}}"
 DB_NAME = "{{config.DB_NAME}}"
 
 [expose.25]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 [expose.10025]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 

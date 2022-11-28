@@ -57,11 +57,11 @@ DB_NAME = "{{config.DB_NAME}}"
 
 
 [expose.110]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 [expose.143]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 [expose.2525]
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true

@@ -7,7 +7,7 @@ build='''
 run-cmd=["entrypoint.sh"]
 run-writable-file-system=true
 [expose.3128]
-type='tcp-internal'
+type='tcp'
 probe.disable=true
 
 [storage.'/var/log/squid']

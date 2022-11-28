@@ -6,4 +6,4 @@ run-writable-file-system = true
 run-cmd = [ "/opt/apache-jmeter-5.5/bin/jmeter-server -Jserver.rmi.ssl.disable=true" ]  #remove argument to enable ssl
 
 [expose.1099]
-type = "tcp-internal"
+type = "tcp"

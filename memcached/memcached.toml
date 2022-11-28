@@ -15,7 +15,7 @@ run-cmd=["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 run-writable-file-system=true
 
 [expose.11211]
-type='tcp-internal'
+type='tcp'
 
 [expose.9150]
 type='http-internal'

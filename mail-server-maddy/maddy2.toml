@@ -21,7 +21,7 @@ name = "maddy-external"
 
 [expose.465]
 # TLS SMTP
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 [expose.587]
@@ -38,7 +38,7 @@ name = "maddy-external"
 
 [expose.993]
 # TLS IMAP
-type = "tcp-internal"
+type = "tcp"
 probe.disable = true
 
 [storage."/data"]

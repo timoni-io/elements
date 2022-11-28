@@ -26,7 +26,7 @@ DB_USER = "nopcommerce"
 DB_PASS = "{{SA_PASSWORD}}"
 
 [expose.1433]
-type = "tcp-internal"
+type = "tcp"
 
 [storage."/var/opt/mssql/"]
 type = "block"

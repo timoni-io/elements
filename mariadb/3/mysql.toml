@@ -13,7 +13,7 @@ MYSQL_DATABASE.type = "text"
 MYSQL_USER = "myuserwiki"
 
 [expose.3306]
-type = "tcp-internal"
+type = "tcp"
 
 [storage."/tmp"]
 type = "temp"

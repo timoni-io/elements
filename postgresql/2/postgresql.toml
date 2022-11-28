@@ -21,7 +21,7 @@ AWS_RESTOR_FILE.type = "text"
 # POSTGRES_DB.type = "text"
 
 [expose.5432]
-type = "tcp-internal"
+type = "tcp"
 
 
 [storage."/var/lib/postgresql"]

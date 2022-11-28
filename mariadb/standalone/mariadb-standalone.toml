@@ -26,7 +26,7 @@ toml-file = "edge"
 project = "alpine"
 
 [expose.3306]
-type = "tcp-internal"
+type = "tcp"
 
 [storage."/var/lib/mysql"]
 max-size-mb = 1000

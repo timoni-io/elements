@@ -7,7 +7,7 @@ build = """
 run-cmd = ["docker-entrypoint.sh", "postgres"]
 
 [expose.5432]
-type = "tcp-internal"
+type = "tcp"
 
 [variables]
 POSTGRES_USER = "{{PGUSER}}"

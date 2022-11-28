@@ -15,5 +15,5 @@ max-size-mb=100
 type='http'
 
 [expose.8443]
-type='tcp-internal'
+type='tcp'
 probe.disable=true
