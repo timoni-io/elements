@@ -1,8 +1,11 @@
 type = "pod"
 
-build = "FROM postgres:14.2-alpine"
 run-cmd = ["docker-entrypoint.sh", "postgres"]
 run-writable-file-system=true
+
+[build]
+type = "image"
+image = "postgres:14.2-alpine"
 
 [expose.5432]
 type = "tcp"

@@ -1,6 +1,8 @@
 type = "pod"
 
-build = """
+[build] 
+type = "script"
+script = """
     FROM webcenter/activemq:5.14.3
     RUN mkdir /activemq_files
     RUN cp -r /data/activemq /activemq_files/data

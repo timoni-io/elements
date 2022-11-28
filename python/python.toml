@@ -1,7 +1,12 @@
 type = "pod"
-dockerfile = '/python/.timoni-docker-file'
+
 run-cmd = ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 run-writable-file-system = true
+
+[build]
+type = "dockerfile"
+dockerfile-path = '/python/.timoni-docker-file'
+
 
 [variables]
 PYTHONDONTWRITEBYTECODE = "1"
