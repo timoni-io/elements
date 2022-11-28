@@ -11,10 +11,10 @@ dockerfile = '/python/.timoni-docker-file'
 [variables]
 PYTHONDONTWRITEBYTECODE = "1"
 PYTHONUNBUFFERED = "1"
-POSTGRES_NAME = "{{postgresql.POSTGRES_DB}}"
-POSTGRES_USER = "{{postgresql.POSTGRES_USER}}"
+POSTGRES_NAME = "{{postgres.POSTGRES_DB}}"
+POSTGRES_USER = "{{postgres.POSTGRES_USER}}"
 POSTGRES_PASSWORD.type = "secret"
-POSTGRES_PASSWORD.value = "{{postgresql.POSTGRES_PASSWORD}}"
+POSTGRES_PASSWORD.value = "{{postgres.POSTGRES_PASSWORD}}"
 
 [expose.8000]
 type = 'http'
