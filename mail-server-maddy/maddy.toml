@@ -1,16 +1,17 @@
 type = "pod"
 
-build = """
+run-cmd = ["/bin/maddy", "-config", "/config/maddy.conf", "run"]
+run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
 FROM foxcpp/maddy:0.6.2
 ADD cert/timoni.io.crt /config/tls/fullchain.pem
 ADD cert/timoni.io.key /config/tls/privkey.pem
 ADD maddy.conf /config/maddy.conf
 ADD aliases.conf /config/aliases
 """
-
-run-cmd = ["/bin/maddy", "-config", "/config/maddy.conf", "run"]
-
-run-writable-file-system = true
 
 [variables]
 MADDY_HOSTNAME = "mail.timoni.io"

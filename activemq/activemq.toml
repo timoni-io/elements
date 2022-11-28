@@ -1,13 +1,5 @@
 type = "pod"
 
-[build] 
-type = "script"
-script = """
-    FROM webcenter/activemq:5.14.3
-    RUN mkdir /activemq_files
-    RUN cp -r /data/activemq /activemq_files/data
-    RUN cp -r /opt/activemq/conf /activemq_files/conf
-    """
 run-cmd = [
     "/bin/bash", "-c",
     """
@@ -19,7 +11,14 @@ run-cmd = [
     ]
 run-writable-file-system = true
 
-ram = 1000
+[build] 
+type = "script"
+script = """
+    FROM webcenter/activemq:5.14.3
+    RUN mkdir /activemq_files
+    RUN cp -r /data/activemq /activemq_files/data
+    RUN cp -r /opt/activemq/conf /activemq_files/conf
+    """
 
 [variables]
 ACTIVEMQ_ADMIN_LOGIN.type = "text"

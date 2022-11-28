@@ -1,8 +1,10 @@
 type = "pod"
 
-build = "FROM mailhog/mailhog:v1.0.1"
-
 run-cmd = ["MailHog"]
+
+[build]
+type = "image"
+image = "mailhog/mailhog:v1.0.1"
 
 [expose.1025]
 # type = "tcp"

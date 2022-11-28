@@ -1,12 +1,15 @@
 type = "pod"
 
-build ="""
-    FROM lmenezes/cerebro
-    USER cerebro
-"""
 run-writable-file-system = true
 run-as-user = [1000] # cerebro
 run-cmd = ["/opt/cerebro/bin/cerebro"]
+
+[build]
+type = "script"
+script = """
+    FROM lmenezes/cerebro
+    USER cerebro
+"""
 
 [expose.9000]
 type = "http"

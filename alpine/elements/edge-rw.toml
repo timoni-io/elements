@@ -1,13 +1,16 @@
 type = "pod"
 description = "Alpine Linux Edge"
 
-build = """
+run-cmd = ["/bin/sleep", "infinity"]
+run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
 ADD alpine-minirootfs-3.15.0_alpha20210804-x86_64.tar.gz /
 COPY apk-repos-edge /etc/apk/repositories
 SHELL ["/bin/sh", "-c"]
 """
-run-cmd = ["/bin/sleep", "infinity"]
-run-writable-file-system = true
 
 [storage."/app"]
 max-size-mb=5000

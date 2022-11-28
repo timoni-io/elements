@@ -1,19 +1,6 @@
 type = "pod"
 description = "Grafana"
 
-build = """
-    FROM grafana/grafana:9.2.2
-    USER root
-    ADD grafana/provisioning /etc/grafana/provisioning
-    ADD grafana/dashboards /etc/grafana/dashboards
-    ADD grafana/grafana.ini /etc/grafana
-    RUN grafana-cli plugins install grafana-piechart-panel
-    RUN mkdir /grafana_files
-    RUN cp -r /etc/grafana /grafana_files/etc
-    RUN cp -r /var/lib/grafana /grafana_files/var
-    RUN cp -r /usr/share/grafana /grafana_files/usr
-"""
-
 run-cmd = [
     "/bin/bash", "-c",
     """
@@ -26,6 +13,21 @@ run-cmd = [
     """
     ]
 run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
+    FROM grafana/grafana:9.2.2
+    USER root
+    ADD grafana/provisioning /etc/grafana/provisioning
+    ADD grafana/dashboards /etc/grafana/dashboards
+    ADD grafana/grafana.ini /etc/grafana
+    RUN grafana-cli plugins install grafana-piechart-panel
+    RUN mkdir /grafana_files
+    RUN cp -r /etc/grafana /grafana_files/etc
+    RUN cp -r /var/lib/grafana /grafana_files/var
+    RUN cp -r /usr/share/grafana /grafana_files/usr
+"""
 
 [expose.3000]
 type = "http"

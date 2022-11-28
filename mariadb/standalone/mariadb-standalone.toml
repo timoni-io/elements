@@ -1,7 +1,11 @@
 description = "mariadb standalone server base on Alpine"
 type = "pod"
 
-build = """
+run-cmd = ["/scripts/run.sh"]
+
+[build]
+type = "script"
+script = """
 COPY standalone/apk-repos /etc/apk/repositories
 
 RUN apk update --allow-untrusted && apk upgrade --allow-untrusted
@@ -17,7 +21,6 @@ RUN mkdir /docker-entrypoint-initdb.d && \\
 
 COPY standalone/my.cnf /etc
 """
-run-cmd = ["/scripts/run.sh"]
 
 [from]
 branch = "master"

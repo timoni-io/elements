@@ -1,7 +1,12 @@
 type = "pod"
 description = "Grafana 9"
 
-build = """
+run-cmd = ["/run.sh"]
+run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
     FROM grafana/grafana:9.0.4
 
     RUN grafana-cli plugins install grafana-piechart-panel
@@ -10,10 +15,6 @@ build = """
     COPY grafana/provisioning /etc/grafana/provisioning
     COPY grafana/dashboards /etc/grafana/dashboards
 """
-
-run-cmd = ["/run.sh"]
-run-writable-file-system = true
-
 
 [variables]
 PATH = "/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

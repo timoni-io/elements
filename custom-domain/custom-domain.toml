@@ -1,5 +1,0 @@
-type = "domain"
-names = ["{{DOMAIN_NAME}}"]
-
-[inputs]
-DOMAIN_NAME.type = "text"

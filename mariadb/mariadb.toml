@@ -1,8 +1,11 @@
 type = "pod"
 
-build ="FROM mariadb"
 run-cmd=["docker-entrypoint.sh","mariadbd"]
 run-writable-file-system=true
+
+[build] 
+type = "image"
+image = "mariadb"
 
 [expose.3306]
 type ="tcp"

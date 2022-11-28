@@ -1,10 +1,6 @@
 type = "pod"
 description = "Cypress"
 
-build = """FROM cypress/included:10.11.0
-    RUN mkdir /tmp/cypress-logs
-    WORKDIR /home/node/tests
-    """
 run-writable-file-system = true
 run-cmd = [ "/bin/bash", "-c",
     """
@@ -14,6 +10,13 @@ run-cmd = [ "/bin/bash", "-c",
     done"
     """
     ]
+
+[build]
+type = "script"
+script = """FROM cypress/included:10.11.0
+    RUN mkdir /tmp/cypress-logs
+    WORKDIR /home/node/tests
+    """
 
 [variables]
 LOG_DEST = "/tmp/cypress-logs"

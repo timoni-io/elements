@@ -1,17 +1,22 @@
 type='pod'
-build='''
-    FROM arangodb:3.9.4
-'''
+
 run-cmd=['/entrypoint.sh','arangod']
 run-writable-file-system=true
-[expose.8529]
-type='http'
-[storage.'/var/lib/arangodb3']
-type='block'
-max-size-mb=1000
-[storage.'/var/lib/arangodb3-apps']
-type='block'
-max-size-mb=1000
+
+[build]
+type = "image"
+image = "arangodb:3.9.4"
+
 [variables]
 ARANGO_ROOT_PASSWORD.type = "secret"
 
+[expose.8529]
+type='http'
+
+[storage.'/var/lib/arangodb3']
+type='block'
+max-size-mb=1000
+
+[storage.'/var/lib/arangodb3-apps']
+type='block'
+max-size-mb=1000

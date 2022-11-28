@@ -1,12 +1,11 @@
 type = "pod"
 
-build = """
-FROM foxcpp/maddy:0.6.2
-"""
-
 run-cmd = ["/bin/maddy", "-config", "/config/maddy.conf", "run"]
-
 run-writable-file-system = true
+
+[build]
+type = "image"
+image = "foxcpp/maddy:0.6.2"
 
 [variables]
 MADDY_HOSTNAME.type = "text"
