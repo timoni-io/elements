@@ -3,8 +3,6 @@ type = "pod"
 build = "FROM postgres:14.2-alpine"
 run-cmd = ["docker-entrypoint.sh", "postgres"]
 run-writable-file-system=true
-cpu = 200
-ram = 2000
 
 [expose.5432]
 type = "tcp-internal"
