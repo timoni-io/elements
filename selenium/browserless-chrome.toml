@@ -1,9 +1,9 @@
 type = "pod"
 description = "Browserless Chrome"
-
-build = "FROM browserless/chrome:1.56.0-puppeteer-18.0.5"
 run-writable-file-system = true
 run-cmd = [ "/usr/src/app/start.sh" ] 
-
+[build]
+type = "image"
+image ="browserless/chrome:1.56.0-puppeteer-18.0.5"
 [expose.3000]
 type = "http"

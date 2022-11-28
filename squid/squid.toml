@@ -1,11 +1,12 @@
 type='pod'
-build='''
-    FROM ubuntu/squid:latest
-    COPY squid/squid.conf /etc/squid/squid.conf
-    
-'''
 run-cmd=["entrypoint.sh"]
 run-writable-file-system=true
+[build]
+type = "script"
+script = """
+    FROM ubuntu/squid:latest
+    COPY squid/squid.conf /etc/squid/squid.conf
+"""
 [expose.3128]
 type='tcp'
 probe.disable=true

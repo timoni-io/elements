@@ -1,11 +1,9 @@
 type = "pod"
-
-build = "FROM roundcube/roundcubemail:1.6.0-apache"
-
 run-cmd = ["/docker-entrypoint.sh", "apache2-foreground"]
-
 run-writable-file-system = true
-
+[build]
+type = "image"
+image ="roundcube/roundcubemail:1.6.0-apache"
 [variables]
 ROUNDCUBEMAIL_DEFAULT_HOST = "tls://mail.timoni.io"
 ROUNDCUBEMAIL_DEFAULT_PORT = "143"

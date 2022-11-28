@@ -1,15 +1,15 @@
 type = "pod"
 description = "Wiki.js"
-
-build = """
+run-cmd = ["node", "server"] 
+[build]
+type = "script"
+script = """
 FROM requarks/wiki:2.5
 RUN mkdir /wiki/data/cache
 RUN chmod a+rwx /wiki/data/cache
 RUN mkdir /wiki/data/uploads
 RUN chmod a+rwx /wiki/data/uploads
 """
-run-cmd = ["node", "server"] 
-
 [variables]
 DB_TYPE = "mysql"
 DB_HOST = "mysql"

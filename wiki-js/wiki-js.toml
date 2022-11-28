@@ -1,17 +1,16 @@
 type = "pod"
 description = "Wiki.js"
-
-build = """
+run-cmd = ["node", "server"]
+run-writable-file-system=true
+[build]
+type = "script"
+script = """
 FROM requarks/wiki:2.5
 RUN mkdir /wiki/data/cache
 RUN chmod a+rwx /wiki/data/cache
 RUN mkdir /wiki/data/uploads
 RUN chmod a+rwx /wiki/data/uploads
 """
-
-run-cmd = ["node", "server"]
-run-writable-file-system=true
-
 [variables]
 DB_TYPE = "postgres"
 DB_HOST = "postgresql"

@@ -1,24 +1,21 @@
 type = "pod"
-
-build = """
-    FROM nopcommerceteam/nopcommerce:4.50.4
+run-cmd = ["/bin/sh", "-c", "/app/entrypoint.sh"]
+# dotnet Nop.Web.dll
+# run-cmd = ["sleep", "999999"]
+# run-cmd = ["dotnet", "Nop.Web.dll"]
+run-writable-file-system = true
+cpu = 300
+ram = 2000
+[build]
+type = "script"
+script = """
+  FROM nopcommerceteam/nopcommerce:4.50.4
     RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
     RUN apk add strace
     COPY nopcommerce/entrypoint.sh /app
     RUN mv /app/App_Data  /app/App_Data_org
     RUN chmod 777 /app/entrypoint.sh
-     """
-
-run-cmd = ["/bin/sh", "-c", "/app/entrypoint.sh"]
-# dotnet Nop.Web.dll
-# run-cmd = ["sleep", "999999"]
-# run-cmd = ["dotnet", "Nop.Web.dll"]
-
-run-writable-file-system = true
-
-cpu = 300
-ram = 2000
-
+"""
 [variables]
 INIT_DATA_SOURCEDIR = "/app/App_Data_org"
 INIT_DATA_DESTDIR = "/app/App_Data"

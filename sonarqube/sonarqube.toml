@@ -1,16 +1,5 @@
 type = "pod"
 description = "Sonarqube"
-
-build = """
-    FROM sonarqube:9.7.1-community
-    USER root
-    RUN mkdir /home/sonarqube/sonarqube_files
-    RUN cp -r /opt/sonarqube/data /home/sonarqube/sonarqube_files/data
-    RUN cp -r /opt/sonarqube/extensions /home/sonarqube/sonarqube_files/extensions
-    RUN cp -r /opt/sonarqube/logs /home/sonarqube/sonarqube_files/logs
-    RUN chown -R sonarqube /home/sonarqube/sonarqube_files
-    RUN chgrp -R sonarqube /home/sonarqube/sonarqube_files
-    """
 run-writable-file-system = true
 run-as-user = [1000]
 run-cmd = [ "/bin/bash", "-c",
@@ -22,6 +11,18 @@ run-cmd = [ "/bin/bash", "-c",
     /opt/sonarqube/bin/sonar.sh"
     """
     ]
+[build]
+type = "script"
+script = """
+ FROM sonarqube:9.7.1-community
+    USER root
+    RUN mkdir /home/sonarqube/sonarqube_files
+    RUN cp -r /opt/sonarqube/data /home/sonarqube/sonarqube_files/data
+    RUN cp -r /opt/sonarqube/extensions /home/sonarqube/sonarqube_files/extensions
+    RUN cp -r /opt/sonarqube/logs /home/sonarqube/sonarqube_files/logs
+    RUN chown -R sonarqube /home/sonarqube/sonarqube_files
+    RUN chgrp -R sonarqube /home/sonarqube/sonarqube_files
+"""
 
 [expose.9000]
 type = "http"

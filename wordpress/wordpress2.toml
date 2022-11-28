@@ -1,7 +1,0 @@
-type = "pod"
-build ="FROM wordpress:6"
-run-cmd=[ "/usr/local/bin/docker-entrypoint.sh", "apache2-foreground" ]
-run-writable-file-system = true
-
-[expose.80]
-type = "http"

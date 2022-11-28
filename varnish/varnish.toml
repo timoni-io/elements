@@ -1,12 +1,11 @@
 type='pod'
-
-build='''
+run-cmd=['/usr/local/bin/docker-varnish-entrypoint']
+[build]
+type = "script"
+script = """
 FROM varnish:latest
 COPY varnish/default.vcl /etc/varnish/
-'''
-
-run-cmd=['/usr/local/bin/docker-varnish-entrypoint']
-
+"""
 [storage.'/var/lib/varnish']
 type='temp'
 max-size-mb=100

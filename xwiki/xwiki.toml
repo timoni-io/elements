@@ -1,13 +1,16 @@
 type = "pod"
 description = "X-Wiki"
-build = "FROM xwiki:14.4.1-postgres-tomcat"
-
+run-cmd = ["/usr/local/bin/docker-entrypoint.sh", "xwiki"]
+run-writable-file-system = true
 cpu = 400
 ram = 8000
 
+
+[build]
+type = "image"
+image ="xwiki:14.4.1-postgres-tomcat"
 # run-cmd = ["sleep", "999999"]
-run-cmd = ["/usr/local/bin/docker-entrypoint.sh", "xwiki"]
-run-writable-file-system = true
+
 
 [variables]
 DB_HOST = "postgresql"
