@@ -2,7 +2,7 @@ type = "pod"
 description = "JMeter"
 
 run-writable-file-system = true
-run-cmd = [ "/opt/apache-jmeter-5.5/bin/jmeter-server -Jserver.rmi.ssl.disable=true" ]  #remove argument to enable ssl
+run-cmd = [ "/opt/apache-jmeter-5.5/bin/jmeter-server", "-Jserver.rmi.ssl.disable=true" ]  #remove argument to enable ssl
 
 [build]
 type = "image"
