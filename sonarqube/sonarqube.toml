@@ -4,11 +4,11 @@ run-writable-file-system = true
 run-as-user = [1000]
 run-cmd = [ "/bin/bash", "-c",
     """
-    "cp -ruT /home/sonarqube/sonarqube_files/data /opt/sonarqube/data && 
+    cp -ruT /home/sonarqube/sonarqube_files/data /opt/sonarqube/data && 
     cp -ruT /home/sonarqube/sonarqube_files/extensions /opt/sonarqube/extensions &&
     cp -ruT /home/sonarqube/sonarqube_files/logs /opt/sonarqube/logs &&
     rm -rf /home/sonarqube/sonarqube_files &&
-    /opt/sonarqube/bin/sonar.sh"
+    /opt/sonarqube/bin/sonar.sh
     """
     ]
 [build]
