@@ -3,10 +3,10 @@ type = "pod"
 run-cmd = [
     "/bin/bash", "-c",
     """
-    "cp -ruT /activemq_files/data /data/activemq &&
+    cp -ruT /activemq_files/data /data/activemq &&
     cp -ruT /activemq_files/conf /opt/activemq/conf &&
     rm -r /activemq_files &&
-    /app/run.sh"
+    /app/run.sh
     """
     ]
 run-writable-file-system = true

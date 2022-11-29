@@ -4,10 +4,10 @@ description = "Cypress"
 run-writable-file-system = true
 run-cmd = [ "/bin/bash", "-c",
     """
-    "git clone https://$GIT_USERNAME:$GIT_TOKEN@$GIT_REPO_URL . &&
+    git clone https://$GIT_USERNAME:$GIT_TOKEN@$GIT_REPO_URL . &&
     while true ;
     do export LOG_FILE=`date +%Y%m%d%H%M%S` ; cypress run --config baseUrl=$SITE_URL | tee -a $LOG_DEST/$LOG_FILE ; sleep 60 ;
-    done"
+    done
     """
     ]
 
