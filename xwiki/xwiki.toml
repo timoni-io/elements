@@ -7,13 +7,13 @@ ram = 8000
 
 [build]
 type = "image"
-image ="xwiki:14.4.1-postgres-tomcat"
+image ="xwiki:14.10.0-postgres-tomcat"
 # run-cmd = ["sleep", "999999"]
 
 [variables]
 DB_HOST = "postgresql"
 DB_PORT = "5432"
-DB_USER = "{{postgresql.PGUSER}}"
+DB_USER = "{{postgresql.POSTGRES_USER}}"
 DB_PASSWORD = "{{postgresql.POSTGRES_PASSWORD}}"
 LOG_FORMAT="%time{23} [%thread%] %level% %message%"
 DB_DATABASE = "{{postgresql.POSTGRES_DB}}"
