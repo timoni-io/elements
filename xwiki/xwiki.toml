@@ -1,16 +1,14 @@
 type = "pod"
-description = "X-Wiki"
+description = "https://www.xwiki.org/"
 run-cmd = ["/usr/local/bin/docker-entrypoint.sh", "xwiki"]
 run-writable-file-system = true
 cpu = 400
 ram = 8000
 
-
 [build]
 type = "image"
 image ="xwiki:14.4.1-postgres-tomcat"
 # run-cmd = ["sleep", "999999"]
-
 
 [variables]
 DB_HOST = "postgresql"
@@ -23,8 +21,7 @@ PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/
 
 [expose.8080]
 type = "http"
-[expose.8080.probe]
-disable = true
+probe.disable = true
 
 [storage."/usr/local/xwiki/data"]
 type = "block"
