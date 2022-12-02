@@ -5,17 +5,17 @@ run-writable-file-system=true
 
 [build]
 type = "image"
-#image = "postgres:15.1-alpine"
-image = "postgres:14.2-alpine"
+image = "postgres:15.1-alpine"
+#image = "postgres:14.2-alpine"
 
 [expose.5432]
 type = "tcp"
 
 [variables]
-POSTGRES_USER = "user"
+POSTGRES_USER = "xwiki"
 POSTGRES_ROOT_PASSWORD.type = "secret"
 POSTGRES_PASSWORD.type = "secret"
-POSTGRES_DB = "db"
+POSTGRES_DB = "xwiki"
 
 [storage."/var/lib/postgresql"]
 type = "block"
