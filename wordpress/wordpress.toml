@@ -1,15 +1,17 @@
 type = "pod"
 run-cmd = [ "/usr/local/bin/docker-entrypoint.sh", "apache2-foreground" ]
 run-writable-file-system = true
+
 [build]
 type = "image"
 image ="wordpress:6"
+
 [variables]
-WORDPRESS_DB_HOST.type = "text"
-WORDPRESS_DB_USER.type = "text"
+WORDPRESS_DB_HOST = "{{mariadb.MARIADB_USER}}"
+WORDPRESS_DB_USER = "{{mariadb.MARIADB_USER}}"
 WORDPRESS_DB_PASSWORD.type = "secret"
-WORDPRESS_DB_NAME.type = "text"
-WORDPRESS_TABLE_PREFIX.type = "text"
+WORDPRESS_DB_NAME = "{{mariadb.MARIADB_PASSWORD}}"
+WORDPRESS_TABLE_PREFIX = "wp_"
 
 [storage."/var/www/html"]
 type = "block"

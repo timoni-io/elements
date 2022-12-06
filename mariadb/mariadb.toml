@@ -11,9 +11,9 @@ image = "mariadb"
 type ="tcp"
 
 [variables]
-MARIADB_USER.type = "text"
-MARIADB_PASSWORD.type = "secret"
-MARIADB_ROOT_PASSWORD.type = "secret"
+USER.type = "text"
+PASSWORD.type = "secret"
+ROOT_PASSWORD.type = "secret"
 
 [storage."/var/lib/mysql"]
 type = "block"

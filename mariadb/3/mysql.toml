@@ -1,16 +1,15 @@
 type = "pod"
-
-build = """
-FROM mysql:8.0
-"""
-
 run-cmd = ["docker-entrypoint.sh", "mysqld"]
+
+[build]
+type = "image"
+image ="mysql:8.0"
 
 [variables]
 MYSQL_ROOT_PASSWORD.type = "secret"
 MYSQL_PASSWORD.type = "secret"
-MYSQL_DATABASE.type = "text"
-MYSQL_USER = "myuserwiki"
+MYSQL_DATABASE = "db"
+MYSQL_USER = "user"
 
 [expose.3306]
 type = "tcp"
@@ -26,4 +25,3 @@ max-size-mb = 20
 [storage."/var/lib/mysql"]
 type = "block"
 max-size-mb = 1000
-
