@@ -8,7 +8,7 @@ type = "image"
 image = "arangodb:3.9.4"
 
 [variables]
-ARANGO_ROOT_PASSWORD.type = "secret"
+ARANGO_ROOT_PASSWORD.secret = true
 
 [expose.8529]
 type='http'

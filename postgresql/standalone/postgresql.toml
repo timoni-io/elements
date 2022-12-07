@@ -16,8 +16,8 @@ PGUSER = "postgres"
 PGDATA = "/var/lib/postgresql/pgdata"
 
 [variables]
-POSTGRES_ROOT_PASSWORD.type = "secret"
-POSTGRES_PASSWORD.type = "secret"
+POSTGRES_ROOT_PASSWORD.secret = true
+POSTGRES_PASSWORD.secret = true
 
 [storage."/var/lib/postgresql"]
 type = "block"

@@ -6,8 +6,8 @@ type = "image"
 image ="mysql:8.0"
 
 [variables]
-MYSQL_ROOT_PASSWORD.type = "secret"
-MYSQL_PASSWORD.type = "secret"
+MYSQL_ROOT_PASSWORD.secret = true
+MYSQL_PASSWORD.secret = true
 MYSQL_DATABASE = "db"
 MYSQL_USER = "user"
 

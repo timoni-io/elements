@@ -18,7 +18,7 @@ script = """
 
 [variables]
 PATH = "/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-GF_SECURITY_ADMIN_PASSWORD.type = "secret"
+GF_SECURITY_ADMIN_PASSWORD.secret = true
 
 [expose.3000]
 type = "http"

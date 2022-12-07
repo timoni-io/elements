@@ -14,10 +14,10 @@ PGDATA = "/var/lib/postgresql/pgdata"
 POSTGRES_ROOT_PASSWORD = "tajnehaslo"
 POSTGRES_PASSWORD = "nopcommerce"
 POSTGRES_DB = "nopcommerce"
-AWS_PASS.type = "secret"
+AWS_PASS.secret = true
 AWS_RESTOR_FILE.type = "text"
-# POSTGRES_ROOT_PASSWORD.type = "secret"
-# POSTGRES_PASSWORD.type = "secret"
+# POSTGRES_ROOT_PASSWORD.secret = true
+# POSTGRES_PASSWORD.secret = true
 # POSTGRES_DB.type = "text"
 
 [expose.5432]

@@ -13,8 +13,8 @@ type = "tcp"
 
 [variables]
 POSTGRES_USER = "xwiki"
-POSTGRES_ROOT_PASSWORD.type = "secret"
-POSTGRES_PASSWORD.type = "secret"
+POSTGRES_ROOT_PASSWORD.secret = true
+POSTGRES_PASSWORD.secret = true
 POSTGRES_DB = "xwiki"
 
 [storage."/var/lib/postgresql"]

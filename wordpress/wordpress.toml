@@ -11,7 +11,7 @@ WORDPRESS_DB_HOST = "mysql"
 WORDPRESS_DB_USER = "{{mysql.MYSQL_USER}}"
 WORDPRESS_DB_NAME = "{{mysql.MYSQL_DATABASE}}"
 WORDPRESS_TABLE_PREFIX = "wp_"
-WORDPRESS_DB_PASSWORD.type = "secret"
+WORDPRESS_DB_PASSWORD.secret = true
 WORDPRESS_DB_PASSWORD.value = "{{mysql.MYSQL_PASSWORD}}"
 
 [storage."/var/www/html"]

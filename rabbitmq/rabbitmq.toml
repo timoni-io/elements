@@ -8,7 +8,7 @@ image ="rabbitmq:management"
 RABBITMQ_DEFAULT_USER="{{RABBITMQ_USER}}"
 RABBITMQ_DEFAULT_PASS="{{RABBITMQ_PASSWORD}}"
 RABBITMQ_USER.type="text"
-RABBITMQ_PASSWORD.type="secret"
+RABBITMQ_PASSWORD.secret = true
 [storage.'/var/lib/rabbitmq']
 type='block'
 max-size-mb=1000

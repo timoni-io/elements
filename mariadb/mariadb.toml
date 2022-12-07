@@ -12,8 +12,8 @@ type ="tcp"
 
 [variables]
 USER.type = "text"
-PASSWORD.type = "secret"
-ROOT_PASSWORD.type = "secret"
+PASSWORD.secret = true
+ROOT_PASSWORD.secret = true
 
 [storage."/var/lib/mysql"]
 type = "block"
