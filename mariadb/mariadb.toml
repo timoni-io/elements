@@ -11,7 +11,7 @@ image = "mariadb"
 type ="tcp"
 
 [variables]
-USER.type = "text"
+USER = ""
 PASSWORD.secret = true
 ROOT_PASSWORD.secret = true
 

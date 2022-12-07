@@ -7,7 +7,7 @@ image ="rabbitmq:management"
 [variables]
 RABBITMQ_DEFAULT_USER="{{RABBITMQ_USER}}"
 RABBITMQ_DEFAULT_PASS="{{RABBITMQ_PASSWORD}}"
-RABBITMQ_USER.type="text"
+RABBITMQ_USER = ""
 RABBITMQ_PASSWORD.secret = true
 [storage.'/var/lib/rabbitmq']
 type='block'

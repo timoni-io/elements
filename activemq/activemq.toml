@@ -21,7 +21,7 @@ script = """
     """
 
 [variables]
-ACTIVEMQ_ADMIN_LOGIN.type = "text"
+ACTIVEMQ_ADMIN_LOGIN = ""
 ACTIVEMQ_ADMIN_PASSWORD.secret = true
 
 [expose.8161]

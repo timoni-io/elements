@@ -8,8 +8,8 @@ type = "image"
 image = "foxcpp/maddy:0.6.2"
 
 [variables]
-MADDY_HOSTNAME.type = "text"
-MADDY_DOMAIN.type = "text"
+MADDY_HOSTNAME = ""
+MADDY_DOMAIN = ""
 MADDY_CONFIG = "/config/maddy.conf"
 
 [expose.25]

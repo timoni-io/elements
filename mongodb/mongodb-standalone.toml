@@ -8,9 +8,9 @@ type = "image"
 image = "mongo:6.0.2"
 
 [variables]
-MONGO_INITDB_ROOT_USERNAME.type = "text"
+MONGO_INITDB_ROOT_USERNAME = ""
 MONGO_INITDB_ROOT_PASSWORD.secret = true
-MONGO_INITDB_DATABASE.type = "text"
+MONGO_INITDB_DATABASE = ""
 
 
 [storage."/data"]

@@ -15,10 +15,10 @@ POSTGRES_ROOT_PASSWORD = "tajnehaslo"
 POSTGRES_PASSWORD = "nopcommerce"
 POSTGRES_DB = "nopcommerce"
 AWS_PASS.secret = true
-AWS_RESTOR_FILE.type = "text"
+AWS_RESTOR_FILE = ""
 # POSTGRES_ROOT_PASSWORD.secret = true
 # POSTGRES_PASSWORD.secret = true
-# POSTGRES_DB.type = "text"
+# POSTGRES_DB = ""
 
 [expose.5432]
 type = "tcp"

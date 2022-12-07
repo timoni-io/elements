@@ -10,7 +10,7 @@ ROUNDCUBEMAIL_DEFAULT_PORT = "143"
 ROUNDCUBEMAIL_SMTP_SERVER = "tls://mail.timoni.io"
 ROUNDCUBEMAIL_SMTP_PORT = "587"
 ROUNDCUBEMAIL_DB_TYPE = "sqlite"
-# ENV_ID.type = "text"
+# ENV_ID = ""
 # ROUNDCUBEMAIL_DEFAULT_HOST = "tls://maddy.{{ENV_ID}}.svc"
 
 [expose.80]

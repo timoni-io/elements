@@ -21,9 +21,9 @@ script = """FROM cypress/included:10.11.0
 [variables]
 LOG_DEST = "/tmp/cypress-logs"
 LOG_FILE = "`date +%Y%m%d%H%M%S`"
-SITE_URL.type = "text"
-GIT_REPO_URL.type = "text"
-GIT_USERNAME.type = "text"
+SITE_URL = ""
+GIT_REPO_URL = ""
+GIT_USERNAME = ""
 GIT_TOKEN.secret = true
 
 [storage."/tmp/cypress-logs"]
