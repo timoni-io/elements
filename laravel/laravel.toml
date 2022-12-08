@@ -1,0 +1,11 @@
+type = 'pod'
+run-writable-file-system=true
+run-cmd = ["/opt/bitnami/scripts/laravel/entrypoint.sh", "/opt/bitnami/scripts/laravel/run.sh"]
+[build]
+type = "image"
+image ="bitnami/laravel:9-debian-11"
+[expose.8000]
+type = "http"
+[storage.'/app']
+type='block'
+max-size-mb=1000
