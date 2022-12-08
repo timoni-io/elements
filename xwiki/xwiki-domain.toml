@@ -1,6 +1,6 @@
 type = "domain"
 description = "Template domain for xwiki"
-domain = "xwiki.local"
+domain = "xwiki.localhost"
 [paths."/"]
 element = "xwiki"
 port = 8080
