@@ -1,7 +1,7 @@
 type = "domain"
 description = "Template domain for xwiki"
 domain = "xwiki.local"
-[path."/"]
+[paths."/"]
 element = "xwiki"
 port = 8080
 prefix = ""
