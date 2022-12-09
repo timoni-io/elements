@@ -13,7 +13,7 @@ type ="tcp"
 [variables]
 USER = ""
 PASSWORD.secret = true
-ROOT_PASSWORD.secret = true
+MARIADB_ROOT_PASSWORD.secret = true
 
 [storage."/var/lib/mysql"]
 type = "block"
