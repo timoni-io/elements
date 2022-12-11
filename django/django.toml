@@ -4,6 +4,7 @@ run-cmd = ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 run-writable-file-system = true
 
 [build]
+root-path = "/django"
 type = "script"
 script = """
 FROM python:3
