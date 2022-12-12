@@ -3,7 +3,6 @@ run-writable-file-system = true
 run-cmd = ["gatsby", "develop", "--host=0.0.0.0"]
 [build]
 type = 'script'
-root-path = '/timoni/gatsby/'
 script = """
 FROM node:lts
 RUN npm install -g gatsby-cli
