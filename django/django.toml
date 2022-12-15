@@ -1,27 +1,26 @@
 type = "pod"
 
-run-cmd = ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+run-cmd = ['python', 'manage.py', 'runserver', '0.0.0.0:8000']
 run-writable-file-system = true
 
 [build]
-root-path = "/django"
-type = "script"
+type = 'script'
 script = """
-FROM python:3
-WORKDIR /code
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY example/* .
+FROM python:3.11.1-bullseye
+WORKDIR /app
+
+RUN python -m pip install 'Django>=4.0,<5.0' 'psycopg2>=2.8'
+RUN django-admin startproject app /app
+
+COPY django/settings.py /app/app
 """
 
+[expose.8000]
+type = 'http'
 
 [variables]
 PYTHONDONTWRITEBYTECODE = "1"
 PYTHONUNBUFFERED = "1"
-POSTGRES_NAME = "{{postgresql.POSTGRES_DB}}"
-POSTGRES_USER = "{{postgresql.POSTGRES_USER}}"
-POSTGRES_PASSWORD.secret = true
-POSTGRES_PASSWORD.value = "{{postgresql.POSTGRES_PASSWORD}}"
-
-[expose.8000]
-type = 'http'
+#POSTGRES_NAME = "{{postgresql.POSTGRES_DB}}"
+#POSTGRES_USER = "{{postgresql.POSTGRES_USER}}"
+#POSTGRES_PASSWORD = "{{postgresql.POSTGRES_PASSWORD}}"
