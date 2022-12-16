@@ -5,12 +5,3 @@ storage-size-gb = 80
 cpu-limit = 8
 ram-limit-gb = 10
 
-[user.root]
-password = "2s_d2RpbBhSQ5!8lwTFo9F31l2Xafy"
-database = "admin"
-roles = ["clusterAdmin", "userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase", "backup", "restore"]
-
-[user.moadmin]
-password = "p71vsSLKh40HWrncLUyybhcdes-LTN"
-database = "epzp"
-roles = ["readWrite"]
