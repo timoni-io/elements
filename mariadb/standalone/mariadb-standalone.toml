@@ -1,5 +1,5 @@
-description = "mariadb standalone server base on Alpine"
 type = "pod"
+description = "mariadb standalone server base on Alpine"
 
 run-cmd = ["/scripts/run.sh"]
 
@@ -23,10 +23,10 @@ COPY standalone/my.cnf /etc
 """
 
 [from]
+git-repo-name = "alpine"
 branch = "master"
 commit = "68b9cb67b78358a69025de276674fdb3d9f9ca4d"
-toml-file = "edge"
-project = "alpine"
+file-path = "edge"
 
 [expose.3306]
 type = "tcp"

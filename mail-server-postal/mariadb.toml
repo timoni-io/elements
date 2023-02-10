@@ -3,10 +3,10 @@ type = "pod"
 run-writable-file-system = true
 
 [from]
-project = "mariadb"
+git-repo-name = "mariadb"
 branch = "master"
 commit = "41e4d203e48ea363fd938e541c475733ca47f6e2"
-toml-file = "standalone"
+file-path = "standalone"
 
 [variables]
 MYSQL_DATABASE = "{{config.MYSQL_DATABASE}}"

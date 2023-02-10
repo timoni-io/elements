@@ -70,7 +70,7 @@ script = """
 """
 
 [from]
-toml-file = 'alpine'
+file-path = 'alpine'
 
 [expose.8080]
 type = 'http'

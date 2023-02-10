@@ -6,9 +6,9 @@ run-cmd = ["/opt/postal/app/bin/postal", "smtp-server"]
 # capability-add-net-bind-service = true
 
 [from]
-toml-file = "core"
+file-path = "core"
 
-[build] 
+[build]
 type = "script"
 script = """
 COPY postal.yml /config/postal.yml

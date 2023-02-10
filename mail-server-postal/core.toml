@@ -1,6 +1,8 @@
 type = "pod"
 
-dockerfile = "postal/Dockerfile"
-build-root-path = "postal"
-
 run-cmd = ["sleep", "9999"]
+
+[build]
+type = "dockerfile"
+dockerfile = "postal/Dockerfile"
+root-path = "postal"

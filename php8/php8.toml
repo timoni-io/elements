@@ -69,7 +69,7 @@ HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-pin
 """
 
 [from]
-toml-file = 'alpine'
+file-path = 'alpine'
 
 [expose.8080]
 type = 'http'

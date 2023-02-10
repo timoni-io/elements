@@ -1,11 +1,11 @@
-type='pod'
+type = 'pod'
 
-run-cmd=["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-run-writable-file-system=true
+run-cmd = ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+run-writable-file-system = true
 
 [build]
 type = "script"
-script = '''
+script = """
     FROM memcached:1.6.9-alpine
     USER root
     RUN apk update && apk add busybox-extras go supervisor
@@ -15,17 +15,16 @@ script = '''
     RUN go build
 
     COPY memcached/supervisord.conf /etc/supervisord.conf
-'''
+"""
 
 
 [expose.11211]
-type='tcp'
+type = 'tcp'
 
 [expose.9150]
-type='http-internal'
-paths=['/metrics']
-probe.disable=true
+type = 'http-internal'
+probe.disable = true
 
 [storage.'/tmp']
-type='temp'
+type = 'temp'
 max-size-mb = 10
