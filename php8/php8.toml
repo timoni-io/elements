@@ -76,7 +76,6 @@ type = 'http'
 
 [expose.9113]
 type = 'http-internal'
-paths = ['/metrics']
 probe.disable = true
 
 [storage.'/tmp']
