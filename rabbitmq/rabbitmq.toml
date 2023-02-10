@@ -1,19 +1,25 @@
-type="pod"
-run-cmd=["docker-entrypoint.sh","rabbitmq-server"]
-run-writable-file-system=true
+type = "pod"
+
+run-cmd = ["docker-entrypoint.sh", "rabbitmq-server"]
+run-writable-file-system = true
+
 [build]
 type = "image"
-image ="rabbitmq:management"
+image = "rabbitmq:management"
+
 [variables]
-RABBITMQ_DEFAULT_USER="{{RABBITMQ_USER}}"
-RABBITMQ_DEFAULT_PASS="{{RABBITMQ_PASSWORD}}"
+RABBITMQ_DEFAULT_USER = "{{RABBITMQ_USER}}"
+RABBITMQ_DEFAULT_PASS = "{{RABBITMQ_PASSWORD}}"
 RABBITMQ_USER = ""
 RABBITMQ_PASSWORD.secret = true
+
 [storage.'/var/lib/rabbitmq']
-type='block'
-max-size-mb=1000
+type = 'block'
+max-size-mb = 1000
+
 [expose.15672]
-type='http'
+type = 'http'
+
 [expose.5672]
-type='tcp'
-probe.disable=true
+type = 'tcp'
+probe.disable = true

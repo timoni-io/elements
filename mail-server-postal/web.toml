@@ -1,15 +1,18 @@
 type = "pod"
 
-from.toml-file = "core"
-build = """
-COPY postal.yml /config/postal.yml
-COPY signing.key /config/signing.key
-"""
-
 run-writable-file-system = true
 apply-variables-on-files = ["/config/postal.yml"]
 run-cmd = ["/opt/postal/app/bin/postal", "web-server"]
 # run-cmd = ["sleep", "99999"]
+
+from.toml-file = "core"
+
+[build] 
+type = "script"
+script = """
+COPY postal.yml /config/postal.yml
+COPY signing.key /config/signing.key
+"""
 
 [variables]
 RABBITMQ_DEFAULT_USER = "{{config.RABBITMQ_DEFAULT_USER}}"

@@ -1,14 +1,16 @@
 type = "pod"
 
-build = """
+run-writable-file-system = true
+apply-variables-on-files = ["/config/postal.yml"]
+run-cmd = ["/opt/postal/app/bin/postal", "worker"]
+
+[build] 
+type = "script"
+script = """
 FROM ghcr.io/postalserver/postal:2.1.1
 COPY postal.yml /config/postal.yml
 COPY signing.key /config/signing.key
 """
-
-run-writable-file-system = true
-apply-variables-on-files = ["/config/postal.yml"]
-run-cmd = ["/opt/postal/app/bin/postal", "worker"]
 
 [variables]
 RABBITMQ_DEFAULT_USER = "{{config.RABBITMQ_DEFAULT_USER}}"

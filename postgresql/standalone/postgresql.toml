@@ -1,10 +1,13 @@
 type = "pod"
-build = """
+
+run-cmd = ["docker-entrypoint.sh", "postgres"]
+
+[build]
+type = "script"
+script = """
     FROM postgres:14.2-alpine
     COPY update_pg_access.sh /docker-entrypoint.d
     """
-
-run-cmd = ["docker-entrypoint.sh", "postgres"]
 
 [expose.5432]
 type = "tcp"
@@ -14,8 +17,6 @@ POSTGRES_USER = "{{PGUSER}}"
 POSTGRES_DB = "xwiki"
 PGUSER = "postgres"
 PGDATA = "/var/lib/postgresql/pgdata"
-
-[variables]
 POSTGRES_ROOT_PASSWORD.secret = true
 POSTGRES_PASSWORD.secret = true
 

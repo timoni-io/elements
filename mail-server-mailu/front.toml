@@ -1,10 +1,11 @@
 type = "pod"
 
-build = "FROM mailu/nginx:1.8"
-
 run-writable-file-system = true
-
 run-cmd = ["/bin/sh", "-c", "/start.py"]
+
+[build] 
+type = "image"
+image = "mailu/nginx:1.8"
 
 [variables]
 # config variables

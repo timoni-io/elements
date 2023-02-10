@@ -1,7 +1,11 @@
 type = "pod"
-build = "FROM mariadb:10.8"
+
 run-cmd = ["docker-entrypoint.sh", "mariadbd"]
 run-writable-file-system = true
+
+[build] 
+type = "image"
+image = "mariadb:10.8"
 
 [variables]
 TZ = "{{config.TZ}}"

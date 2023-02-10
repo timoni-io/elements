@@ -1,17 +1,21 @@
 type = "pod"
 
-from.toml-file = "core"
-build = """
+run-writable-file-system = true
+apply-variables-on-files = ["/config/postal.yml"]
+run-cmd = ["/opt/postal/app/bin/postal", "smtp-server"]
+# capability-add-net-bind-service = true
+
+[from]
+toml-file = "core"
+
+[build] 
+type = "script"
+script = """
 COPY postal.yml /config/postal.yml
 COPY signing.key /config/signing.key
 COPY cert/smtp.cert /config/smtp.cert
 COPY cert/smtp.key /config/smtp.key
 """
-
-run-writable-file-system = true
-apply-variables-on-files = ["/config/postal.yml"]
-run-cmd = ["/opt/postal/app/bin/postal", "smtp-server"]
-# capability-add-net-bind-service = true
 
 [variables]
 RABBITMQ_DEFAULT_USER = "{{config.RABBITMQ_DEFAULT_USER}}"

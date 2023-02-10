@@ -1,6 +1,8 @@
-type='pod'
-run-writable-file-system=true
-run-cmd=['gulp']
+type = 'pod'
+
+run-writable-file-system = true
+run-cmd = ['gulp']
+
 [build]
 type = "script"
 script = """
@@ -12,5 +14,6 @@ WORKDIR /regexr/regexr-3.3
 RUN npm install
 RUN npm install --global gulp-cli
 """
+
 [expose.3000]
-type='http'
+type = 'http'

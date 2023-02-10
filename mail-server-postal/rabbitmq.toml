@@ -1,6 +1,10 @@
 type = "pod"
-build = "FROM rabbitmq:3"
+
 run-cmd = ["rabbitmq-server"]
+
+[build] 
+type = "image"
+image = "rabbitmq:3"
 
 [variables]
 RABBITMQ_DEFAULT_USER = "{{config.RABBITMQ_DEFAULT_USER}}"

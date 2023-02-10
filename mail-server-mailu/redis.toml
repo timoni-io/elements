@@ -1,8 +1,10 @@
 type = "pod"
 
-build = "FROM redis:alpine"
-
 run-cmd = ["redis-server"]
+
+[build] 
+type = "image"
+image = "redis:alpine"
 
 [storage."/data"]
 type = "block"

@@ -1,9 +1,12 @@
 type = "pod"
+
 run-cmd = ["docker-entrypoint.sh", "redis-server"]
-run-writable-file-system=true
+run-writable-file-system = true
+
 [build]
 type = "image"
-image ="redis"
+image = "redis"
+
 [expose.6379]
 type = "tcp"
 

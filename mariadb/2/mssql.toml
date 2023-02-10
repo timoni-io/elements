@@ -1,20 +1,22 @@
 type = "pod"
 
-build = """
-    FROM mcr.microsoft.com/mssql/server:2019-CU16-GDR1-ubuntu-20.04
-
-    USER root
-    # RUN groupadd -g 10001 mssql
-    # RUN mkdir -p /var/opt/mssql/data/
-    # RUN chown mssql:mssql -R /var/opt
-
-    # USER mssql
-    """
-
 # run-writable-file-system = true
 # run-cmd = ["sleep", "999999"]
 # run-as-user = [10001]
 run-cmd = ["/opt/mssql/bin/sqlservr"]
+
+[build] 
+type = "script"
+script = """
+FROM mcr.microsoft.com/mssql/server:2019-CU16-GDR1-ubuntu-20.04
+
+USER root
+# RUN groupadd -g 10001 mssql
+# RUN mkdir -p /var/opt/mssql/data/
+# RUN chown mssql:mssql -R /var/opt
+
+# USER mssql
+"""
 
 [variables]
 SA_PASSWORD = "nopCommerce_db_password"

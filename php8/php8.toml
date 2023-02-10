@@ -1,9 +1,13 @@
-type='pod'
+type = 'pod'
 description = "bazowy obraz php-8 + fpm + Nginx"
-run-as-user=[65534]
-run-cmd=["/usr/bin/supervisord","-c","/etc/supervisord.conf"]
-run-writable-file-system=true
-build = '''
+
+run-as-user = [65534]
+run-cmd = ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
 COPY php8/php-fpm-nginx/apk-repos-314 /etc/apk/repositories
 
 # Install packages and remove default server definition
@@ -62,16 +66,19 @@ WORKDIR /app/web
 
 # Configure a healthcheck to validate that everything is up&running
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
-'''
+"""
+
 [from]
-toml-file='alpine'
+toml-file = 'alpine'
+
 [expose.8080]
-type='http'
+type = 'http'
+
 [expose.9113]
-type='http-internal'
-paths=['/metrics']
-[expose.9113.probe]
-disable=true
+type = 'http-internal'
+paths = ['/metrics']
+probe.disable = true
+
 [storage.'/tmp']
-type='temp'
-max-size-mb=500
+type = 'temp'
+max-size-mb = 500
