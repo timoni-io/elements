@@ -6,7 +6,6 @@ run-writable-file-system=true
 [build]
 type = "image"
 image = "postgres:15.1-alpine"
-#image = "postgres:14.2-alpine"
 
 [expose.5432]
 type = "tcp"
