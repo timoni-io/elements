@@ -13,6 +13,10 @@ container:
         mv wordpress web
     WORKDIR /app/web
     COPY wordpress/wp-config.php .
+    
+    # max upload file size
+    RUN sed 's|post_max_size = 8M|post_max_size = 100M|g' -i /etc/php7/conf.d/custom.ini
+    RUN sed 's|upload_max_filesize = 8M|upload_max_filesize = 100M|g' -i /etc/php7/conf.d/custom.ini
     USER nobody
 
   requires:
