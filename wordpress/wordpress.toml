@@ -3,8 +3,12 @@ run-cmd = [ "/usr/local/bin/docker-entrypoint.sh", "apache2-foreground" ]
 run-writable-file-system = true
 
 [build]
-type = "image"
-image ="wordpress:6"
+type = "script"
+script = """
+FROM wordpress:6
+RUN sed 's|post_max_size = 8M|post_max_size = 100M|g' -i $PHP_INI_DIR/conf.d/php.ini
+RUN sed 's|upload_max_filesize = 2M|upload_max_filesize = 100M|g' -i $PHP_INI_DIR/conf.d/php.ini
+"""
 
 [variables]
 WORDPRESS_DB_HOST = "mysql"
