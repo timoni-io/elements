@@ -10,3 +10,7 @@ image = "phpmyadmin/phpmyadmin:5.2.1"
 
 [expose.80]
 type = "http"
+
+[variables]
+PMA_HOST = "mysql"
+PMA_USER = "root"
