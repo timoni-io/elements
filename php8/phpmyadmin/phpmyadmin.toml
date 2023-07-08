@@ -1,6 +1,6 @@
 type = "pod"
 
-run-cmd: [sleep, infinity]
+run-cmd = [sleep, infinity]
 # run-cmd=["docker-entrypoint.sh","mariadbd"]
 run-writable-file-system=true
 
