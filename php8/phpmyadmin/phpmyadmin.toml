@@ -1,12 +1,12 @@
 type = "pod"
 
-run-cmd = ["sleep", "infinity"]
-# run-cmd=["docker-entrypoint.sh","mariadbd"]
+# run-cmd = ["sleep", "infinity"]
+run-cmd = ["/docker-entrypoint.sh", "apache2-foreground"]
 run-writable-file-system = true
 
 [build]
 type = "image"
 image = "phpmyadmin/phpmyadmin:5.2.1"
 
-#[expose.3306]
-#type ="tcp"
+[expose.80]
+type = "tcp"
