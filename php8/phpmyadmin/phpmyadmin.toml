@@ -7,6 +7,7 @@ run-writable-file-system = true
 [build]
 type = "image"
 image = "phpmyadmin/phpmyadmin:5.2.1"
+# https://hub.docker.com/_/phpmyadmin
 
 [expose.80]
 type = "http"
@@ -15,3 +16,6 @@ type = "http"
 PMA_HOST = "mysql"
 PMA_USER = "root"
 PMA_PASSWORD = "{{mysql.MYSQL_ROOT_PASSWORD}}"
+MEMORY_LIMIT = "200M"
+UPLOAD_LIMIT = "100M"
+MAX_EXECUTION_TIME = "600" # sec
