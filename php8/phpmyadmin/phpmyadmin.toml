@@ -9,4 +9,4 @@ type = "image"
 image = "phpmyadmin/phpmyadmin:5.2.1"
 
 [expose.80]
-type = "tcp"
+type = "http"
