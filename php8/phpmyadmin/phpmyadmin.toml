@@ -14,3 +14,4 @@ type = "http"
 [variables]
 PMA_HOST = "mysql"
 PMA_USER = "root"
+PMA_PASSWORD = "{{mysql.MYSQL_ROOT_PASSWORD}}"
