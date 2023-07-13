@@ -1,0 +1,18 @@
+type = "pod"
+
+run-cmd = ["sleep", "infinity"]
+run-writable-file-system = true
+
+[build]
+type = "image"
+image = "gitlab/gitlab-ce:16.1.2-ce.0"
+
+[storage.'/var/opt/gitlab']
+type = 'block'
+max-size-mb = 1000
+
+[expose.80]
+type = 'tcp'
+probe.disable = true
+
+# [variables]
