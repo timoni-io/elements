@@ -1,6 +1,7 @@
 type = "pod"
 
 run-cmd = ["sleep", "infinity"]
+# run-cmd = ["/assets/wrapper"]
 run-writable-file-system = true
 
 [build]
@@ -12,7 +13,11 @@ type = 'block'
 max-size-mb = 1000
 
 [expose.80]
-type = 'tcp'
+type = 'http'
 probe.disable = true
+
+# [expose.22]
+# type = 'tcp'
+# probe.disable = true
 
 # [variables]
