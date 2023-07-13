@@ -10,7 +10,11 @@ image = "gitlab/gitlab-ce:16.1.2-ce.0"
 
 [storage.'/var/opt/gitlab']
 type = 'block'
-max-size-mb = 1000
+max-size-mb = 10_000 # 10 GB
+
+[storage.'/etc/gitlab']
+type = 'block'
+max-size-mb = 100 # 100 MB
 
 [expose.80]
 type = 'http'
