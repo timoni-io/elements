@@ -1,7 +1,7 @@
 type = "pod"
 
-run-cmd = ["sleep", "infinity"]
-# run-cmd = ["/assets/wrapper"]
+# run-cmd = ["sleep", "infinity"]
+run-cmd = ["/assets/wrapper"]
 run-writable-file-system = true
 
 [build]
@@ -25,3 +25,4 @@ probe.disable = true
 # probe.disable = true
 
 # [variables]
+# cat /etc/gitlab/initial_root_password
