@@ -13,6 +13,6 @@ COPY alpine/apk-repos-edge /etc/apk/repositories
 SHELL ["/bin/sh", "-c"]
 """
 
-[expose:80]
+[expose.80]
 type = "http"
 probe.disable = true
