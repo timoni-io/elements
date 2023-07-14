@@ -1,0 +1,18 @@
+type = "pod"
+description = "Alpine Linux Edge"
+
+run-writable-file-system=true
+run-cmd = ["/bin/sleep", "infinity"]
+
+[build]
+type = "script"
+script = """
+FROM scratch
+ADD alpine/alpine-minirootfs-3.16.2-x86_64.tar.gz /
+COPY alpine/apk-repos-edge /etc/apk/repositories
+SHELL ["/bin/sh", "-c"]
+"""
+
+[expose:80]
+type = "http"
+probe.disable = true
