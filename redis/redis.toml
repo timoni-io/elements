@@ -6,7 +6,7 @@ run-writable-file-system = true
 [build]
 type = "script"
 script = """
-    FROM redis:7.0.12
+    FROM redis:7.2-rc3-alpine
     USER root
     RUN apk update && apk add busybox-extras go supervisor
 
