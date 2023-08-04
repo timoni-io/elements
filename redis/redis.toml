@@ -14,7 +14,7 @@ script = """
     WORKDIR /exporter
     RUN go build
 
-    COPY memcached/supervisord.conf /etc/supervisord.conf
+    COPY redis/supervisord.conf /etc/supervisord.conf
 """
 
 
