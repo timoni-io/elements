@@ -1,14 +1,29 @@
-type = "pod"
+type = 'pod'
 
-run-cmd = ["docker-entrypoint.sh", "redis-server"]
+run-cmd = ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 run-writable-file-system = true
 
 [build]
-type = "image"
-image = "redis"
+type = "script"
+script = """
+    FROM redis:7.0.12
+    USER root
+    RUN apk update && apk add busybox-extras go supervisor
+
+    COPY redis/exporter /exporter
+    WORKDIR /exporter
+    RUN go build
+
+    COPY memcached/supervisord.conf /etc/supervisord.conf
+"""
+
 
 [expose.6379]
 type = "tcp"
+
+[expose.9121] # metrics
+type = 'http-internal'
+probe.disable = true
 
 [storage."/tmp"]
 type = "block"
