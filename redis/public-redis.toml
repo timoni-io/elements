@@ -1,0 +1,7 @@
+type = "domain"
+external-protocol = "tcp"
+external-port = 6379
+
+[paths."/"]
+element = "redis"
+port = 6379
