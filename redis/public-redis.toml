@@ -1,4 +1,5 @@
 type = "domain"
+
 external-protocol = "tcp"
 external-port = 6379
 
