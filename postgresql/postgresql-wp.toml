@@ -1,0 +1,43 @@
+type = "pod"
+
+run-cmd = ["docker-entrypoint.sh", "postgres"]
+run-writable-file-system=true
+
+[build]
+type = "image"
+image = "postgres:15.4-alpine"
+
+[expose.5432]
+type = "tcp"
+
+[variables]
+POSTGRES_USER = "wp"
+POSTGRES_ROOT_PASSWORD.secret = true
+POSTGRES_PASSWORD.secret = true
+POSTGRES_DB = "wp"
+PGUSER = "{{POSTGRES_USER}}"
+PGPASSWORD = "{{POSTGRES_ROOT_PASSWORD}}"
+
+[storage."/var/lib/postgresql"]
+type = "block"
+max-size-mb = 10000
+
+[storage."/etc/postgresql"]
+type = "block"
+max-size-mb = 500
+
+[storage."/var/log/postgresql"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40
+
+[storage."/backups"]
+type = "block"
+max-size-mb = 2000
