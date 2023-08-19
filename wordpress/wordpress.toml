@@ -5,7 +5,7 @@ run-writable-file-system = true
 [build]
 type = "script"
 script = """
-FROM wordpress:6.3-php8.1-apache
+FROM wordpress:6-php7.4-apache
 RUN cp $PHP_INI_DIR/php.ini-production  $PHP_INI_DIR/php.ini
 
 # max upload size
