@@ -13,8 +13,8 @@ RUN sed 's|post_max_size = 8M|post_max_size = 100M|g' -i $PHP_INI_DIR/php.ini
 RUN sed 's|upload_max_filesize = 2M|upload_max_filesize = 100M|g' -i $PHP_INI_DIR/php.ini
 
 # ionCube Loader for PHP
-RUN sed 's|zend_extension=opcache|zend_extension=opcache\\nzend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20200930/ioncube_loader_lin_8.1.so|g' -i $PHP_INI_DIR/php.ini
-ADD wordpress/ioncube_loader_lin_8.1.so  /usr/local/lib/php/extensions/no-debug-non-zts-20200930
+RUN sed 's|zend_extension=opcache|zend_extension=opcache\\nzend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20210902/ioncube_loader_lin_8.1.so|g' -i $PHP_INI_DIR/php.ini
+ADD wordpress/ioncube_loader_lin_8.1.so  /usr/local/lib/php/extensions/no-debug-non-zts-20210902
 """
 
 [variables]
