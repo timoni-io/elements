@@ -1,0 +1,25 @@
+type = "pod"
+description = "Grafana 10"
+
+run-cmd = ["/run.sh"]
+run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
+    FROM grafana/grafana:10.0.3
+
+    RUN grafana-cli plugins install grafana-piechart-panel
+
+    COPY grafana-10/grafana.ini /etc/grafana
+    COPY grafana-10/provisioning /etc/grafana/provisioning
+    COPY grafana-10/dashboards /etc/grafana/dashboards
+"""
+
+[variables]
+PATH = "/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+GF_SECURITY_ADMIN_PASSWORD.secret = true
+
+[expose.3000]
+type = "http"
+
