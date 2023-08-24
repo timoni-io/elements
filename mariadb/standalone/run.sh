@@ -80,8 +80,6 @@ EOF
 	echo 'MySQL init process done. Ready for start up.'
 	echo
 
-	du -sh /tmp # debug
-
 	echo "exec /usr/bin/mysqld --user=mysql --console --skip-name-resolve --skip-networking=0" "$@"
 fi
 
