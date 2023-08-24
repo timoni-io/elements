@@ -10,7 +10,10 @@ script = """
 FROM alpine:3.18.3
 
 RUN apk update && apk upgrade
-RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && rm -f /var/cache/apk/*
+RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen perl perl-doc wget procps && rm -f /var/cache/apk/*
+
+RUN wget http://mysqltuner.pl -O /mysqltuner.pl && chmod +x /mysqltuner.pl
+ADD mariadb/standalone/conn /bin
 
 ADD mariadb/standalone/run.sh /scripts/run.sh
 RUN mkdir /docker-entrypoint-initdb.d && \\
@@ -24,6 +27,7 @@ ADD mariadb/standalone/my.cnf /etc
 """
 
 [expose.3306]
+probe.disable = true
 type = "tcp"
 
 [storage."/var/lib/mysql"]
@@ -44,7 +48,7 @@ MARIADB_DATABASE = "db"
 MARIADB_USER = "db"
 MARIADB_PASSWORD.secret = true
 
-MARIADB_ROOT_USER = "mysql"
+MARIADB_ROOT_USER = "root"
 MARIADB_ROOT_PASSWORD.secret = true
 
 LOG_FORMAT = "%timestamp{19}% %num% [%level%] %message%"
