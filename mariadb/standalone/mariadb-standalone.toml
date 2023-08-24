@@ -6,12 +6,12 @@ run-cmd = ["/scripts/run.sh"]
 [build]
 type = "script"
 script = """
-COPY standalone/apk-repos /etc/apk/repositories
+FROM alpine:3.18.3
 
-RUN apk update --allow-untrusted && apk upgrade --allow-untrusted
-RUN apk add --allow-untrusted --no-cache mariadb mariadb-client mariadb-server-utils pwgen && rm -f /var/cache/apk/*
+RUN apk update && apk upgrade
+RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && rm -f /var/cache/apk/*
 
-ADD standalone/run.sh /scripts/run.sh
+ADD run.sh /scripts/run.sh
 RUN mkdir /docker-entrypoint-initdb.d && \\
     mkdir /scripts/pre-exec.d && \\
     mkdir /scripts/pre-init.d && \\
@@ -19,14 +19,8 @@ RUN mkdir /docker-entrypoint-initdb.d && \\
     ln -sf /tmp /var/tmp && \\
     chmod -R 755 /scripts
 
-COPY standalone/my.cnf /etc
+COPY my.cnf /etc
 """
-
-[from]
-git-repo-name = "alpine"
-branch = "master"
-commit = "68b9cb67b78358a69025de276674fdb3d9f9ca4d"
-file-path = "edge"
 
 [expose.3306]
 type = "tcp"
@@ -44,9 +38,12 @@ max-size-mb = 100
 type = "temp"
 
 [variables]
-# MYSQL_DATABASE = "{{ELEMENT_NAME}}"
-MYSQL_DATABASE = "mariadb"
-MYSQL_PASSWORD = "user-pwd"
-MYSQL_ROOT_PASSWORD = "cau4ooNgahc5Ooce"
-MYSQL_USER = "user"
+MARIADB_DATABASE = "db"
+
+MARIADB_USER = "db"
+MARIADB_PASSWORD.secret = true
+
+MARIADB_ROOT_USER = "mysql"
+MARIADB_ROOT_PASSWORD.secret = true
+
 LOG_FORMAT = "%timestamp{19}% %num% [%level%] %message%"
