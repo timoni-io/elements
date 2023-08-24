@@ -2,6 +2,7 @@ type = "pod"
 description = "mariadb standalone server base on Alpine"
 
 run-cmd = ["/scripts/run.sh"]
+run-writable-file-system = true
 
 [build]
 type = "script"
@@ -11,7 +12,7 @@ FROM alpine:3.18.3
 RUN apk update && apk upgrade
 RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && rm -f /var/cache/apk/*
 
-ADD run.sh /scripts/run.sh
+ADD mariadb/standalone/run.sh /scripts/run.sh
 RUN mkdir /docker-entrypoint-initdb.d && \\
     mkdir /scripts/pre-exec.d && \\
     mkdir /scripts/pre-init.d && \\
@@ -19,7 +20,7 @@ RUN mkdir /docker-entrypoint-initdb.d && \\
     ln -sf /tmp /var/tmp && \\
     chmod -R 755 /scripts
 
-COPY my.cnf /etc
+ADD mariadb/standalone/my.cnf /etc
 """
 
 [expose.3306]
