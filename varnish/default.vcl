@@ -29,22 +29,13 @@ sub vcl_backend_response {
 	set beresp.http.Cache-Control = "public";
 }
 
-sub vcl_hit {
-	set resp.http.x-cache = "hit";
-	if (obj.ttl <= 0s && obj.grace > 0s) {
-		set resp.http.x-cache = "hit graced";
-	}
-}
-
-sub vcl_miss {
-	set resp.http.x-cache = "miss";
-}
-
-sub vcl_pass {
-	set resp.http.x-cache = "pass";
-}
-
 sub vcl_deliver {
 	unset resp.http.Via;
 	unset resp.http.X-Varnish;
+
+	if (obj.hits > 0) {
+		set resp.http.X-Cache = "HIT";
+	} else {
+		set resp.http.X-Cache = "MISS";
+	}
 }
