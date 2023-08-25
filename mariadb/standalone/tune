@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/mysqltuner.pl --userenv MARIADB_ROOT_USER --passenv MARIADB_ROOT_PASSWORD
