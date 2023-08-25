@@ -1,6 +1,6 @@
 type = 'pod'
 
-run-cmd = ['/usr/local/bin/docker-varnish-entrypoint']
+run-cmd = ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 apply-variables-on-files = ["/etc/varnish/default.vcl"]
 run-writable-file-system = true
 
@@ -10,6 +10,9 @@ script = """
     FROM varnish:7.3.0
     COPY varnish/default.vcl /etc/varnish/
     COPY varnish/prometheus_varnish_exporter-1.6.1.linux-amd64/prometheus_varnish_exporter /
+
+    RUN apt -y update && apt -y install supervisor
+    COPY varnish/supervisord.conf /etc/supervisord.conf
     """
 
 [storage.'/var/lib/varnish']
