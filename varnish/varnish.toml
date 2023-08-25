@@ -9,6 +9,7 @@ type = "script"
 script = """
     FROM varnish:7.3.0
     COPY varnish/default.vcl /etc/varnish/
+    COPY varnish/prometheus_varnish_exporter-1.6.1.linux-amd64/prometheus_varnish_exporter /
     """
 
 [storage.'/var/lib/varnish']
@@ -21,6 +22,11 @@ probe.disable = true
 
 [expose.8443]
 type = 'tcp'
+probe.disable = true
+
+[expose.9131] # metrics
+type = 'http-internal'
+metrics-path = "/metrics"
 probe.disable = true
 
 [variables]

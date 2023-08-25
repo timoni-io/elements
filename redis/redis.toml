@@ -23,6 +23,7 @@ type = "tcp"
 
 [expose.9121] # metrics
 type = 'http-internal'
+metrics-path = "/metrics"
 probe.disable = true
 
 [storage."/tmp"]
