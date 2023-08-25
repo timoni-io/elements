@@ -20,7 +20,7 @@ sub vcl_recv {
 
 	set req.backend_hint = d.backend("{{BackendDomain}}");
 
-	if ( req.url == "/" ) {
+	if ( req.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg)(\?[a-z0-9=\.]+)?$" ) {
 		unset req.http.Cookie;
 		unset req.http.Authorization;
 	}
@@ -31,11 +31,7 @@ sub vcl_backend_response {
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 
-	if ( bereq.url == "/" ) {
-		unset beresp.http.Cookie;
-		unset beresp.http.Authorization;
-	}
-	if ( bereq.url ~ "\.(html|htm|css|js|txt|xml|svg)(\?[a-z0-9=]+)?$" ) {
+	if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg)(\?[a-z0-9=]+)?$" ) {
 		unset beresp.http.Cookie;
 		unset beresp.http.Authorization;
 	}
