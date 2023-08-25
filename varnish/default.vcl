@@ -32,9 +32,11 @@ sub vcl_backend_response {
 
 	if ( bereq.url == "/" ) {
 		unset beresp.http.Cookie;
+		unset beresp.http.Authorization;
 	}
 	if ( bereq.url ~ "\.(html|htm|css|js|txt|xml|svg)(\?[a-z0-9=]+)?$" ) {
 		unset beresp.http.Cookie;
+		unset beresp.http.Authorization;
 	}
 }
 
