@@ -45,6 +45,11 @@ GRANT ALL ON *.* TO 'root'@'%' identified by '$MARIADB_ROOT_PASSWORD' WITH GRANT
 GRANT ALL ON *.* TO 'root'@'localhost' identified by '$MARIADB_ROOT_PASSWORD' WITH GRANT OPTION ;
 SET PASSWORD FOR 'root'@'localhost'=PASSWORD('${MARIADB_ROOT_PASSWORD}') ;
 DROP DATABASE IF EXISTS test ;
+
+DROP USER IF EXISTS ''@'localhost';
+DROP USER IF EXISTS ''@'mariadb-0';
+DELETE FROM mysql.user WHERE `user`.`Host` = '' AND `user`.`User` = 'PUBLIC';
+
 FLUSH PRIVILEGES ;
 EOF
 
