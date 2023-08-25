@@ -14,9 +14,9 @@ RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen perl pe
 
 RUN wget http://mysqltuner.pl -O /mysqltuner.pl && chmod +x /mysqltuner.pl
 
-RUN mkdir /docker-entrypoint-initdb.d && \\
-    mkdir /scripts/pre-exec.d && \\
-    mkdir /scripts/pre-init.d && \\
+RUN mkdir -p /docker-entrypoint-initdb.d && \\
+    mkdir -p /scripts/pre-exec.d && \\
+    mkdir -p /scripts/pre-init.d && \\
     rm -rf /var/tmp && \\
     ln -sf /tmp /var/tmp && \\
     chmod -R 755 /scripts
