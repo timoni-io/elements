@@ -32,6 +32,11 @@ RUN mkdir -p /docker-entrypoint-initdb.d && \\
 probe.disable = true
 type = "tcp"
 
+[expose.9104] # metrics
+type = 'http-internal'
+metrics-path = "/metrics"
+probe.disable = true
+
 [storage."/var/lib/mysql"]
 max-size-mb = 1000
 type = "block"
