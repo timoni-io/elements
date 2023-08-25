@@ -17,6 +17,7 @@ max-size-mb = 100
 
 [expose.80]
 type = 'http'
+probe.disable = true
 
 [expose.8443]
 type = 'tcp'
