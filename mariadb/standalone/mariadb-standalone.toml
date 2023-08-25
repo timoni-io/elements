@@ -52,3 +52,6 @@ MARIADB_ROOT_USER = "root"
 MARIADB_ROOT_PASSWORD.secret = true
 
 LOG_FORMAT = "%timestamp{19}% %num% [%level%] %message%"
+
+# [actions]
+# "tune" = ["/mysqltuner.pl --user root --passenv MARIADB_ROOT_PASSWORD"]
