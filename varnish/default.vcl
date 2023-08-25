@@ -35,6 +35,8 @@ sub vcl_backend_response {
 		unset beresp.http.Cookie;
 		unset beresp.http.Authorization;
 	}
+
+	set beresp.ttl = 4h;
 }
 
 sub vcl_deliver {
