@@ -22,10 +22,10 @@ RUN docker-php-ext-install soap
 
 # locales
 RUN apt install -y locales
-RUN echo "LC_ALL=pl_PL.UTF-8" | tee -a /etc/environment
-RUN echo "pl_PL.UTF-8 UTF-8" | tee -a /etc/locale.gen
-RUN echo "LANG=pl_PL.UTF-8" | tee -a /etc/locale.conf
-RUN locale-gen pl_PL.UTF-8
+RUN echo "LC_ALL=pl_PL.UTF-8" > /etc/environment
+RUN echo "pl_PL.UTF-8 UTF-8" > /etc/locale.gen
+RUN echo "LANG=pl_PL.UTF-8" > /etc/locale.conf
+RUN locale-gen pl_PL.UTF-8 && update-locale
 RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 """
 
