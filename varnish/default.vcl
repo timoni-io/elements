@@ -19,6 +19,8 @@ sub vcl_recv {
 	#set req.http.host = "{{BackendDomain}}";
 	# set the backend
 	set req.backend_hint = d.backend("{{BackendDomain}}");
+
+	unset req.http.Cookie;
 }
 
 sub vcl_backend_response {
@@ -27,6 +29,8 @@ sub vcl_backend_response {
 
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
+
+	unset beresp.http.Cookie;
 }
 
 sub vcl_deliver {
