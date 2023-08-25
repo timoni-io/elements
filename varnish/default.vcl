@@ -17,20 +17,22 @@ sub vcl_recv {
 	# force the host header to match the backend (not all backends need it,
 	# but example.com does)
 	#set req.http.host = "{{BackendDomain}}";
-	# set the backend
+
 	set req.backend_hint = d.backend("{{BackendDomain}}");
 
-	unset req.http.Cookie;
+	if (req.url == "/") {
+		unset req.http.Cookie;
+	}
 }
 
 sub vcl_backend_response {
 
-	# if req.url ~ ""
-
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 
-	unset beresp.http.Cookie;
+	if (req.url == "/") {
+		unset beresp.http.Cookie;
+	}
 }
 
 sub vcl_deliver {
