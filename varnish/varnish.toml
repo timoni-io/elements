@@ -11,8 +11,10 @@ script = """
     COPY varnish/default.vcl /etc/varnish/
     COPY varnish/prometheus_varnish_exporter-1.6.1.linux-amd64/prometheus_varnish_exporter /
 
+    USER root
     RUN apt -y update && apt -y install supervisor
     COPY varnish/supervisord.conf /etc/supervisord.conf
+    USER varnish
     """
 
 [storage.'/var/lib/varnish']
