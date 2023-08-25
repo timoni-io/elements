@@ -2,6 +2,7 @@ type = 'pod'
 
 run-cmd = ['/usr/local/bin/docker-varnish-entrypoint']
 apply-variables-on-files = ["/etc/varnish/default.vcl"]
+run-writable-file-system = true
 
 [build]
 type = "script"
