@@ -22,6 +22,7 @@ sub vcl_recv {
 
 	if ( req.url == "/" ) {
 		unset req.http.Cookie;
+		unset req.http.Authorization;
 	}
 }
 
