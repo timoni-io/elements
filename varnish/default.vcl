@@ -30,7 +30,7 @@ sub vcl_backend_response {
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 
-	if (req.url == "/") {
+	if (beresp.url == "/") {
 		unset beresp.http.Cookie;
 	}
 }
