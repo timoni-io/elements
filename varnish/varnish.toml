@@ -1,18 +1,26 @@
-type='pod'
-run-cmd=['/usr/local/bin/docker-varnish-entrypoint']
+type = 'pod'
+
+run-cmd = ['/usr/local/bin/docker-varnish-entrypoint']
+apply-variables-on-files = ["/etc/varnish/default.vcl"]
+
 [build]
 type = "script"
 script = """
-FROM varnish:latest
-COPY varnish/default.vcl /etc/varnish/
-"""
+    FROM varnish:7.3.0
+    COPY varnish/default.vcl /etc/varnish/
+    """
+
 [storage.'/var/lib/varnish']
-type='temp'
-max-size-mb=100
+type = 'temp'
+max-size-mb = 100
 
 [expose.80]
-type='http'
+type = 'http'
 
 [expose.8443]
-type='tcp'
-probe.disable=true
+type = 'tcp'
+probe.disable = true
+
+[variables]
+BackendPort = "80"
+BackendDomain = "wordpress"

@@ -10,13 +10,13 @@ backend default none;
 # set up a dynamic director
 # for more info, see https://github.com/nigoroll/libvmod-dynamic/blob/master/src/vmod_dynamic.vcc
 sub vcl_init {
-        new d = dynamic.director(port = "80");
+        new d = dynamic.director(port = "{{BackendPort}}");
 }
 
 sub vcl_recv {
 	# force the host header to match the backend (not all backends need it,
 	# but example.com does)
-	set req.http.host = "example.com";
+	#set req.http.host = "{{BackendDomain}}";
 	# set the backend
-	set req.backend_hint = d.backend("example.com");
+	set req.backend_hint = d.backend("{{BackendDomain}}");
 }
