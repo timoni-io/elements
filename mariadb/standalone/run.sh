@@ -100,4 +100,5 @@ done
 
 du -sh /tmp # debug
 
+/mysqld_exporter  --mysqld.username root &
 exec /usr/bin/mysqld --user=mysql --console --skip-name-resolve --skip-networking=0 $@
