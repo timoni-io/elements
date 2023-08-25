@@ -49,6 +49,7 @@ DROP DATABASE IF EXISTS test ;
 DROP USER IF EXISTS ''@'localhost';
 DROP USER IF EXISTS ''@'mariadb-0';
 DELETE FROM mysql.user WHERE `user`.`Host` = '' AND `user`.`User` = 'PUBLIC';
+DELETE FROM mysql.user WHERE `user`.`Host` = 'localhost' AND `user`.`User` = 'mysql';
 
 FLUSH PRIVILEGES ;
 EOF
