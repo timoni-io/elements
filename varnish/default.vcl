@@ -30,16 +30,21 @@ sub vcl_backend_response {
 }
 
 sub vcl_hit {
-	set req.http.x-cache = "hit";
+	set resp.http.x-cache = "hit";
 	if (obj.ttl <= 0s && obj.grace > 0s) {
-		set req.http.x-cache = "hit graced";
+		set resp.http.x-cache = "hit graced";
 	}
 }
 
 sub vcl_miss {
-	set req.http.x-cache = "miss";
+	set resp.http.x-cache = "miss";
 }
 
 sub vcl_pass {
-	set req.http.x-cache = "pass";
+	set resp.http.x-cache = "pass";
+}
+
+sub vcl_deliver {
+	unset resp.http.Via;
+	unset resp.http.X-Varnish;
 }
