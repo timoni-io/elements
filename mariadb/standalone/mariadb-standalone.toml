@@ -14,18 +14,18 @@ RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen perl pe
 
 RUN wget http://mysqltuner.pl -O /mysqltuner.pl && chmod +x /mysqltuner.pl
 
+ADD mariadb/standalone/conn /bin
+ADD mariadb/standalone/tune /bin
+ADD mariadb/standalone/my.cnf /etc
+ADD mariadb/standalone/mysqld_exporter-0.15.0.linux-amd64/mysqld_exporter /
+ADD mariadb/standalone/run.sh /scripts/run.sh
+
 RUN mkdir -p /docker-entrypoint-initdb.d && \\
     mkdir -p /scripts/pre-exec.d && \\
     mkdir -p /scripts/pre-init.d && \\
     rm -rf /var/tmp && \\
     ln -sf /tmp /var/tmp && \\
     chmod -R 755 /scripts
-
-ADD mariadb/standalone/conn /bin
-ADD mariadb/standalone/tune /bin
-ADD mariadb/standalone/my.cnf /etc
-ADD mariadb/standalone/mysqld_exporter-0.15.0.linux-amd64/mysqld_exporter /
-ADD mariadb/standalone/run.sh /scripts/run.sh
 """
 
 [expose.3306]
