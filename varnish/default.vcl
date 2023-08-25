@@ -21,7 +21,7 @@ sub vcl_recv {
 	set req.backend_hint = d.backend("{{BackendDomain}}");
 }
 
-sub vcl_fetch {
+sub vcl_backend_response {
 	remove beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 }
