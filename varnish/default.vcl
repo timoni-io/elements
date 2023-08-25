@@ -22,6 +22,24 @@ sub vcl_recv {
 }
 
 sub vcl_backend_response {
+
+	# if req.url ~ ""
+
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
+}
+
+sub vcl_hit {
+	set req.http.x-cache = "hit";
+	if (obj.ttl <= 0s && obj.grace > 0s) {
+		set req.http.x-cache = "hit graced";
+	}
+}
+
+sub vcl_miss {
+	set req.http.x-cache = "miss";
+}
+
+sub vcl_pass {
+	set req.http.x-cache = "pass";
 }
