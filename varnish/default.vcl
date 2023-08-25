@@ -22,6 +22,6 @@ sub vcl_recv {
 }
 
 sub vcl_backend_response {
-	remove beresp.http.Cache-Control;
+	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 }
