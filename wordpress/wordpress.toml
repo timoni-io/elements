@@ -27,7 +27,8 @@ RUN apt update && apt install -y libxml2-dev
 RUN docker-php-ext-install soap
 
 # tools
-ADD wordpress/tools-8zXjq /var/www/html
+ADD wordpress/docker-entrypoint.sh  /usr/local/bin/
+ADD wordpress/tools-8zXjq  /var/www
 
 # locales
 RUN apt install -y locales
