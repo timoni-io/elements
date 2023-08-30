@@ -2,6 +2,8 @@
 set -Eeuo pipefail
 
 
+echo "installing tools ..."
+ls -l /var/www/html
 mkdir -p /var/www/html/tools-8zXjq
 cp -rf /var/www/tools/*  /var/www/html/tools-8zXjq
 
