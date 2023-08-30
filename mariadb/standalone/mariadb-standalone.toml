@@ -26,6 +26,8 @@ RUN mkdir -p /docker-entrypoint-initdb.d && \\
     rm -rf /var/tmp && \\
     ln -sf /tmp /var/tmp && \\
     chmod -R 755 /scripts
+
+WORKDIR /var/lib/mysql
 """
 
 [expose.3306]

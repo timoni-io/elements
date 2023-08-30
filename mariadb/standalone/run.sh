@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+set -ex
 
 # execute any pre-init scripts
 for i in /scripts/pre-init.d/*sh
@@ -19,7 +19,6 @@ if [ -d /var/lib/mysql/mysql ]; then
 	chown -R mysql:mysql /var/lib/mysql
 else
 	echo "[i] MySQL data directory not found, creating initial DBs"
-	sleep 15 # debug
 
 	chown -R mysql:mysql /var/lib/mysql
 	mysql_install_db --user=mysql --ldata=/var/lib/mysql
@@ -48,8 +47,8 @@ DROP DATABASE IF EXISTS test ;
 
 DROP USER IF EXISTS ''@'localhost';
 DROP USER IF EXISTS ''@'mariadb-0';
-DELETE FROM mysql.user WHERE `user`.`Host` = '' AND `user`.`User` = 'PUBLIC';
-DELETE FROM mysql.user WHERE `user`.`Host` = 'localhost' AND `user`.`User` = 'mysql';
+DELETE FROM mysql.user WHERE Host = '' AND User = 'PUBLIC';
+DELETE FROM mysql.user WHERE Host = 'localhost' AND User = 'mysql';
 
 FLUSH PRIVILEGES ;
 EOF
