@@ -28,7 +28,7 @@ RUN docker-php-ext-install soap
 
 # tools
 ADD wordpress/docker-entrypoint.sh  /usr/local/bin/
-ADD wordpress/tools-8zXjq  /var/www
+ADD wordpress/tools  /var/www/tools
 
 # locales
 RUN apt install -y locales

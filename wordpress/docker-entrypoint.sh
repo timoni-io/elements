@@ -97,6 +97,6 @@ if [[ "$1" == apache2* ]] || [ "$1" = 'php-fpm' ]; then
 fi
 
 mkdir -p /var/www/html/tools-8zXjq
-cp -rf /var/www/tools-8zXjq/*  /var/www/html/tools-8zXjq
+cp -rf /var/www/tools/*  /var/www/html/tools-8zXjq
 
 exec "$@"
