@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+
+mkdir -p /var/www/html/tools-8zXjq
+cp -rf /var/www/tools/*  /var/www/html/tools-8zXjq
+
+
 if [[ "$1" == apache2* ]] || [ "$1" = 'php-fpm' ]; then
         uid="$(id -u)"
         gid="$(id -g)"
@@ -95,8 +100,5 @@ if [[ "$1" == apache2* ]] || [ "$1" = 'php-fpm' ]; then
                 done
         fi
 fi
-
-mkdir -p /var/www/html/tools-8zXjq
-cp -rf /var/www/tools/*  /var/www/html/tools-8zXjq
 
 exec "$@"
