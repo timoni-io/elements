@@ -1,0 +1,23 @@
+type = "pod"
+run-cmd = ["/opt/bitnami/scripts/spark/entrypoint.sh", "/opt/bitnami/scripts/spark/run.sh"]
+run-writable-file-system = true
+
+[build]
+type = "image"
+image = "docker.io/bitnami/spark:3.4"
+
+[expose.8080]
+type = "http"
+probe.disable = true
+
+[expose.7077]
+type = "tcp"
+
+[variables]
+SPARK_MODE= "master"
+SPARK_RPC_AUTHENTICATION_ENABLED= "no"
+SPARK_RPC_ENCRYPTION_ENABLED= "no"
+SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED= "no"
+SPARK_SSL_ENABLED= "no"
+SPARK_USER= "spark"
+

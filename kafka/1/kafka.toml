@@ -1,0 +1,23 @@
+type = "pod"
+run-cmd = ["/opt/bitnami/scripts/kafka/entrypoint.sh", "/opt/bitnami/scripts/kafka/run.sh"]
+run-writable-file-system = true
+
+[build]
+type = "image"
+image = "docker.io/bitnami/kafka:3.4-debian-11"
+
+[expose.9092]
+type = "tcp"
+probe.disable=true
+
+[variables]
+KAFKA_CFG_NODE_ID=1
+KAFKA_ZOOKEEPER_CONNECT= "zookeeper:2181"
+KAFKA_CFG_LISTENERS="PLAINTEXT://127.0.0.1:9092"
+KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP="PLAINTEXT:PLAINTEXT"
+KAFKA_INTER_BROKER_LISTENER_NAME= "PLAINTEXT"
+KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR= 1
+#KAFKA_CFG_CONTROLLER_LISTENER_NAMES="CONTROLLER"
+#KAFKA_CFG_CONTROLLER_QUORUM_VOTERS="0@127.0.0.1:9093"
+#KAFKA_CFG_PROCESS_ROLES="controller,broker"
+

@@ -1,0 +1,14 @@
+type = "pod"
+run-cmd = ["/docker-entrypoint.sh", "zkServer.sh", "start-foreground"]
+run-writable-file-system = true
+
+[build]
+type = "image"
+image = "zookeeper:3.8"
+
+[expose.2181]
+type = "tcp"
+
+[variables]
+ZOOKEEPER_CLIENT_PORT=2181
+ZOOKEEPER_TICK_TIME=2000

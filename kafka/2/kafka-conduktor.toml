@@ -1,0 +1,23 @@
+type = "pod"
+
+run-cmd = ["/opt/conduktor/scripts/run.sh"]
+run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
+    FROM conduktor/conduktor-platform:1.16.3
+    COPY timoni/platform-config.yaml /opt/conduktor
+"""
+
+[expose.8080]
+type = "http"
+[expose.8080.probe]
+path = "/"
+
+[variables]
+CDK_IN_CONF_FILE = "/opt/conduktor/platform-config.yaml"
+KAFKA_BOOTSTRAP_SERVER = "PLAINTEXT://kafka:9092"
+SR_SERVER = "http://kafka-sr:8080"
+CDK_ADMIN_EMAIL = "admin@"
+CDK_ADMIN_PASSWORD = "admin"
