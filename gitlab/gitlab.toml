@@ -18,7 +18,7 @@ max-size-mb = 100 # MB
 
 [storage.'/dev/shm']
 type = 'temp'
-max-size-mb = 200 # MB
+max-size-mb = 300 # MB
 
 [expose.80]
 type = 'http'
