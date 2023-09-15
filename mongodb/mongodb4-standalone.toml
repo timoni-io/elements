@@ -1,0 +1,33 @@
+type = "pod"
+
+run-cmd = ["docker-entrypoint.sh", "mongod"]
+run-writable-file-system = true
+
+[build]
+type = "image"
+image = "mongo:4.4"
+
+[variables]
+MONGO_INITDB_ROOT_USERNAME = ""
+MONGO_INITDB_ROOT_PASSWORD.secret = true
+MONGO_INITDB_DATABASE = ""
+
+[expose.27017]
+type = "http"
+probe.disable = true
+
+[storage."/data"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/var/log/mongodb"]
+type = "block"
+max-size-mb = 1000
+
+[storage."/var/run"]
+type = "temp"
+max-size-mb = 10
+
+[storage."/tmp"]
+type = "temp"
+max-size-mb = 40
