@@ -1,0 +1,58 @@
+type = "pod"
+run-cmd = ["bash", "/opt/meshcentral/startup.sh"]
+run-writable-file-system = true
+
+[build]
+type = "image"
+image = "ghcr.io/ylianst/meshcentral:1.1.11"
+
+[variables]
+NODE_ENV = "production"
+
+USE_MONGODB = true
+# MONGO_URL="mongodb://mongodb:27017/mesh"
+MONGO_INITDB_ROOT_USERNAME = ""
+MONGO_INITDB_ROOT_PASSWORD.secret = true
+
+# initial meshcentral-variables
+
+HOSTNAME = ""
+# set to your reverse proxy IP if you want to put meshcentral behind a reverse proxy
+REVERSE_PROXY = false
+REVERSE_PROXY_TLS_PORT = 443
+# set to true if you wish to enable iframe support
+IFRAME = false
+# set to false if you want disable self-service creation of new accounts besides the first (admin)
+ALLOW_NEW_ACCOUNTS = true
+# set to true to enable WebRTC - per documentation it is not officially released with meshcentral and currently experimental. Use with caution
+WEBRTC = false
+# set to true to allow plugins
+ALLOWPLUGINS = false
+# set to true to allow session recording
+LOCALSESSIONRECORDING = false
+# set to enable or disable minification of json, reduces traffic
+MINIFY = true
+
+[expose.80]
+type = 'http'
+probe.disable = true
+
+[expose.443]
+type = 'http'
+probe.disable = true
+
+[storage."/opt/meshcentral/meshcentral-data"]
+type = "block"
+max-size-mb = 2000
+
+[storage."/opt/meshcentral/meshcentral-files"]
+type = "block"
+max-size-mb = 2000
+
+# [storage."/opt/meshcentral/meshcentral-backups"]
+# type = "block"
+# max-size-mb = 2000
+
+# [storage."/opt/meshcentral/meshcentral-web"]
+# type = "block"
+# max-size-mb = 2000

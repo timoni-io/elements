@@ -6,7 +6,7 @@ run-writable-file-system = true
 
 [build]
 type = "image"
-image = "gitlab/gitlab-ce:16.3.1-ce.0"
+image = "gitlab/gitlab-ce:16.4.0-ce.0"
 
 [storage.'/var/opt/gitlab']
 type = 'block'
