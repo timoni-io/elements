@@ -1,0 +1,18 @@
+type = "pod"
+
+run-cmd = ['gunicorn', 'flask:app']
+run-writable-file-system = true
+
+[build]
+type = 'script'
+script = """
+FROM python:3.11.1-bullseye
+WORKDIR /app
+
+RUN python -m pip install flask gunicorn
+
+COPY __main__.py .
+"""
+
+[expose.5000]
+type = 'http'

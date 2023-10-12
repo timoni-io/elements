@@ -1,0 +1,18 @@
+type = "pod"
+
+run-cmd = ['gunicorn', 'aiohttp:app']
+run-writable-file-system = true
+
+[build]
+type = 'script'
+script = """
+FROM python:3.11.1-bullseye
+WORKDIR /app
+
+RUN python -m pip install aiohttp[speedups] gunicorn
+
+COPY __main__.py .
+"""
+
+[expose.8080]
+type = 'http'
