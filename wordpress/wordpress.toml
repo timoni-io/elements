@@ -17,6 +17,7 @@ RUN sed 's|max_execution_time = 30|max_execution_time = 900|g' -i $PHP_INI_DIR/p
 RUN sed 's|max_input_time = 60|max_input_time = 900|g' -i $PHP_INI_DIR/php.ini
 
 RUN sed 's|;max_input_vars = 1000|max_input_vars = 10000|g' -i $PHP_INI_DIR/php.ini
+RUN sed 's|memory_limit = 128M|memory_limit = 256M|g' -i $PHP_INI_DIR/php.ini
 
 # ionCube Loader for PHP
 RUN sed 's|extension=xsl|extension=xsl\\nzend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20190902/ioncube_loader_lin_7.4.so|g' -i $PHP_INI_DIR/php.ini
