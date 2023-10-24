@@ -6,8 +6,8 @@ run-writable-file-system = true
 type = "script"
 script = """
 FROM golang:1.21.3-alpine3.18 as build
-COPY main.go /src
-COPY go.mod /src
+COPY ingress/redirect-domain/main.go /src
+COPY ingress/redirect-domain/go.mod /src
 RUN cd /src && go build -o redirect
 
 FROM alpine:3.18
