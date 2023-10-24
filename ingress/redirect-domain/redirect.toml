@@ -1,0 +1,23 @@
+type = "pod"
+run-cmd = ["/app"]
+run-writable-file-system = true
+
+[build]
+type = "script"
+script = """
+FROM 1.21.3-alpine3.18 as build
+COPY main.go /src
+COPY go.mod /src
+RUN cd /src && go build -o redirect
+
+FROM alpine
+COPY --from=build /src/redirect /app
+"""
+
+[variables]
+TARGET_URL = ""
+TARGET_PATH = ""
+
+[expose.80]
+type = "http"
+probe.disable = true
