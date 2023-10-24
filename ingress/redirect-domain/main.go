@@ -29,7 +29,7 @@ func main() {
 }
 
 func redirectHandler(w http.ResponseWriter, r *http.Request) {
-	if targetPath == "" {
+	if targetPath == "" || targetPath == "-" {
 		http.Redirect(w, r, targetURL+r.URL.RawPath, http.StatusTemporaryRedirect)
 
 	} else {
