@@ -5,12 +5,12 @@ run-writable-file-system = true
 [build]
 type = "script"
 script = """
-FROM 1.21.3-alpine3.18 as build
+FROM golang:1.21.3-alpine3.18 as build
 COPY main.go /src
 COPY go.mod /src
 RUN cd /src && go build -o redirect
 
-FROM alpine
+FROM alpine:3.18
 COPY --from=build /src/redirect /app
 """
 
