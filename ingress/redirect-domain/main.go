@@ -31,7 +31,7 @@ func main() {
 
 func redirectHandler(w http.ResponseWriter, r *http.Request) {
 	if targetPath == "" || targetPath == "-" {
-		fmt.Println(r.URL.RawPath)
+		fmt.Println("URL:", r.URL.RawPath, "|uri:", r.RequestURI, "|path:", r.URL.Path)
 		http.Redirect(w, r, targetURL+r.URL.RawPath, http.StatusTemporaryRedirect)
 
 	} else {
