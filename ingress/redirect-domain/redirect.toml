@@ -6,11 +6,13 @@ run-writable-file-system = true
 type = "script"
 script = """
 FROM golang:1.21.3-alpine3.18 as build
-COPY ingress/redirect-domain/main.go /src
-COPY ingress/redirect-domain/go.mod /src
-RUN cd /src && go build -o redirect
+WORKDIR /src
+COPY ingress/redirect-domain/main.go .
+COPY ingress/redirect-domain/go.mod .
+RUN cd go build -o redirect
 
 FROM alpine:3.18
+WORKDIR /
 COPY --from=build /src/redirect /app
 """
 
