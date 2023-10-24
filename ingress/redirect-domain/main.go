@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 )
@@ -30,6 +31,7 @@ func main() {
 
 func redirectHandler(w http.ResponseWriter, r *http.Request) {
 	if targetPath == "" || targetPath == "-" {
+		fmt.Println(r.URL.RawPath)
 		http.Redirect(w, r, targetURL+r.URL.RawPath, http.StatusTemporaryRedirect)
 
 	} else {
