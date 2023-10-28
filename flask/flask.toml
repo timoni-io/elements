@@ -6,7 +6,7 @@ run-writable-file-system = true
 [build]
 type = 'script'
 script = """
-FROM python:3.11.1-bullseye
+FROM python:3.12-bookworm
 WORKDIR /app
 
 RUN python -m pip install flask gunicorn
