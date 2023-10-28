@@ -1,6 +1,6 @@
 type = "pod"
 
-run-cmd = ['gunicorn', 'aiohttp:app']
+run-cmd = ['gunicorn', 'aiohttp:app', '--worker-class', 'aiohttp.GunicornWebWorker']
 run-writable-file-system = true
 
 [build]
