@@ -8,7 +8,7 @@ apply-variables-on-files = ["/etc/nginx/nginx.conf"]
 type = "script"
 script ="""
     FROM nginx:stable
-    COPY nginx-domain-proxy/default.conf  /etc/nginx/conf.d
+    COPY nginx-domain-proxy2/default.conf  /etc/nginx/conf.d
     """
 
 [expose.80]
