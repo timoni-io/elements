@@ -1,8 +1,0 @@
-type = "pod"
-run-cmd=["/docker-entrypoint.sh","nginx", "-g", "daemon off;"]
-run-writable-file-system = true
-[build]
-type = "image"
-image ="nginx:stable"
-[expose.80]
-type = "http"

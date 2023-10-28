@@ -2,13 +2,13 @@ type = "pod"
 
 run-cmd=["/docker-entrypoint.sh","nginx", "-g", "daemon off;"]
 run-writable-file-system = true
-apply-variables-on-files = ["/etc/nginx/nginx.conf"]
+apply-variables-on-files = ["/etc/nginx/conf.d/default.conf"]
 
 [build]
 type = "script"
 script ="""
-    FROM nginx:stable
-    COPY nginx-domain-proxy2/default.conf  /etc/nginx/conf.d
+    FROM nginx:1.25.3-alpine3.18-slim
+    COPY nginx-domain-proxy/default.conf  /etc/nginx/conf.d
     """
 
 [expose.80]
