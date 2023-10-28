@@ -1,0 +1,19 @@
+type = "pod"
+
+run-cmd=["/docker-entrypoint.sh","nginx", "-g", "daemon off;"]
+run-writable-file-system = true
+apply-variables-on-files = ["/etc/nginx/nginx.conf"]
+
+[build]
+type = "script"
+script ="""
+    FROM nginx:stable
+    COPY nginx-domain-proxy/default.conf  /etc/nginx/conf.d
+    """
+
+[expose.80]
+type = "http"
+
+[variables]
+FRONT_DOMAIN = ""
+BACK_DOMAIN = ""
