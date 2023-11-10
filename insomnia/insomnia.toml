@@ -1,0 +1,13 @@
+type = "pod"
+description = "Insomnia 8.4.0"
+
+run-cmd = ["/bin/sleep", "infinity"]
+
+[build]
+type = "script"
+script = """
+FROM debian:12.2-slim
+RUN apt-get update && apt-get install -y curl xz-utils
+RUN cd /bin && curl -sL https://github.com/Kong/insomnia/releases/download/lib%408.4.0/inso-linux-8.4.0.tar.xz | tar -xvJf -
+RUN chown -R root:root /bin/inso
+"""
