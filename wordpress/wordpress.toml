@@ -40,10 +40,10 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 RUN sed 's|;intl.default_locale =|intl.default_locale = pl_PL.UTF-8|g' -i $PHP_INI_DIR/php.ini
 
 # datadog
-RUN cd /tmp && \
-    curl -LO https://github.com/DataDog/dd-trace-php/releases/latest/download/datadog-setup.php && \
-    php datadog-setup.php --php-bin=all --enable-appsec --enable-profiling && \
-    php datadog-setup.php config set --php-bin all -ddatadog.profiling.experimental_timeline_enabled=1
+#RUN cd /tmp && \
+#    curl -LO https://github.com/DataDog/dd-trace-php/releases/latest/download/datadog-setup.php && \
+#    php datadog-setup.php --php-bin=all --enable-appsec --enable-profiling && \
+#    php datadog-setup.php config set --php-bin all -ddatadog.profiling.experimental_timeline_enabled=1
 
 # run
 ADD wordpress/docker-entrypoint.sh  /usr/local/bin/
@@ -63,8 +63,9 @@ LC_CTYPE = "pl_PL.UTF-8"
 LANGUAGE = "pl_PL"
 
 [storage."/var/www/html"]
-type = "block"
+type = "shared"
 max-size-mb = 6000
+name = "wordpress"
 
 [expose.80]
 type = "http"
