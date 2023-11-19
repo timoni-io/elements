@@ -1,0 +1,13 @@
+type = "pod"
+
+run-writable-file-system=true
+run-cmd = ["/bin/sleep", "infinity"]
+
+[build]
+type = "image"
+image = "alpine"
+
+[storage."/abc"]
+type = "shared"
+max-size-mb = 100
+name = "test-pv"
