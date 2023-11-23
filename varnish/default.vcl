@@ -31,7 +31,7 @@ sub vcl_backend_response {
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 
-	if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=]+)?$" || bereq.url ~ "^/produkt/" || req.url ~ "^/wp-content/uploads/" ) {
+	if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=]+)?$" || bereq.url ~ "^/produkt/" || bereq.url ~ "^/wp-content/uploads/" ) {
 		unset beresp.http.Cookie;
 		unset beresp.http.Authorization;
 	}
