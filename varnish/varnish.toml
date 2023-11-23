@@ -37,3 +37,4 @@ probe.disable = true
 [variables]
 BackendPort = "80"
 BackendDomain = "wordpress"
+EP_FIX_ENV = "/etc/varnish/default.vcl"
