@@ -20,7 +20,7 @@ sub vcl_recv {
 
 	set req.backend_hint = d.backend("{{BackendDomain}}");
 
-	if ( req.url == "/" || req.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=\.]+)?$" || req.url ~ "^/produkt/"  ) {
+	if ( req.url == "/" || req.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=\.]+)?$" || req.url ~ "^/produkt/" || req.url ~ "^/wp-content/uploads/"  ) {
 		unset req.http.Cookie;
 		unset req.http.Authorization;
 	}
@@ -31,12 +31,12 @@ sub vcl_backend_response {
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 
-	if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=]+)?$" || bereq.url ~ "^/produkt/" ) {
+	if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=]+)?$" || bereq.url ~ "^/produkt/" || req.url ~ "^/wp-content/uploads/" ) {
 		unset beresp.http.Cookie;
 		unset beresp.http.Authorization;
 	}
 
-	set beresp.ttl = 4h;
+	set beresp.ttl = 12d;
 }
 
 sub vcl_deliver {
