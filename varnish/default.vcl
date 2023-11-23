@@ -28,6 +28,11 @@ sub vcl_recv {
 
 sub vcl_backend_response {
 
+	if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504) {
+		set beresp.uncacheable = true;
+		return (deliver);
+	}
+
 	unset beresp.http.Cache-Control;
 	set beresp.http.Cache-Control = "public";
 
