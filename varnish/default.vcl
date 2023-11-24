@@ -20,7 +20,7 @@ sub vcl_recv {
 
 	set req.backend_hint = d.backend("{{BackendDomain}}");
 
-	if req.method == "GET" {
+	if ( req.method == "GET" ) {
 		if ( req.url == "/" || req.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=\.]+)?$" || req.url ~ "^/produkt/" || req.url ~ "^/wp-content/uploads/"  ) {
 			unset req.http.Cookie;
 			unset req.http.Authorization;
