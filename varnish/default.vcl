@@ -50,7 +50,7 @@ sub vcl_backend_response {
 sub vcl_deliver {
 	unset resp.http.Via;
 	unset resp.http.X-Varnish;
-	unset resp.X-Powered-By;
+	unset resp.http.X-Powered-By;
 
 	if (obj.hits > 0) {
 		set resp.http.X-Cache = "HIT";
