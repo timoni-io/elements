@@ -44,7 +44,8 @@ sub vcl_backend_response {
 		}
 	}
 
-	set beresp.ttl = 12d;
+	# 12 dni
+	set beresp.ttl = 1036800s;
 }
 
 sub vcl_deliver {
