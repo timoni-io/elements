@@ -30,18 +30,18 @@ sub vcl_recv {
 
 sub vcl_backend_response {
 
-	#if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504) {
-	#	set beresp.uncacheable = true;
-	#	return (deliver);
-	#}
+	if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504) {
+		set beresp.uncacheable = true;
+		return (deliver);
+	}
 
-	
-
-	if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=]+)?$" || bereq.url ~ "^/produkt/" || bereq.url ~ "^/wp-content/uploads/" ) {
-		unset beresp.http.Cookie;
-		unset beresp.http.Authorization;
-		unset beresp.http.Cache-Control;
-		set beresp.http.Cache-Control = "public";
+	if ( req.method == "GET" ) {
+		if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=]+)?$" || bereq.url ~ "^/produkt/" || bereq.url ~ "^/wp-content/uploads/" ) {
+			unset beresp.http.Cookie;
+			unset beresp.http.Authorization;
+			unset beresp.http.Cache-Control;
+			set beresp.http.Cache-Control = "public";
+		}
 	}
 
 	set beresp.ttl = 12d;
@@ -50,6 +50,7 @@ sub vcl_backend_response {
 sub vcl_deliver {
 	unset resp.http.Via;
 	unset resp.http.X-Varnish;
+	unset resp.X-Powered-By;
 
 	if (obj.hits > 0) {
 		set resp.http.X-Cache = "HIT";
