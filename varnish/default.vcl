@@ -30,7 +30,7 @@ sub vcl_recv {
 
 sub vcl_backend_response {
 
-	if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504 || beresp.status == 301 || beresp.status == 304 || beresp.status == 307)) {
+	if ( beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504 || beresp.status == 301 || beresp.status == 304 || beresp.status == 307 ) {
 		set beresp.uncacheable = true;
 		return (deliver);
 	}
