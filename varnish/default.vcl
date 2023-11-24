@@ -36,7 +36,7 @@ sub vcl_backend_response {
 	}
 
 	if ( bereq.method == "GET" ) {
-		if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=]+)?$" || bereq.url ~ "^/produkt/" || bereq.url ~ "^/wp-content/uploads/" ) {
+		if ( bereq.url == "/" || bereq.url ~ "\.(html|htm|css|js|txt|xml|svg|jpg|png)(\?[a-z0-9=\.]+)?$" || bereq.url ~ "^/produkt/" || bereq.url ~ "^/wp-content/uploads/" ) {
 			unset beresp.http.Cookie;
 			unset beresp.http.Set-Cookie;
 			unset beresp.http.Authorization;
