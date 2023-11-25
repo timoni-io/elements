@@ -45,6 +45,13 @@ RUN sed 's|;intl.default_locale =|intl.default_locale = pl_PL.UTF-8|g' -i $PHP_I
 #    php datadog-setup.php --php-bin=all --enable-appsec --enable-profiling && \
 #    php datadog-setup.php config set --php-bin all -ddatadog.profiling.experimental_timeline_enabled=1
 
+# proxysql
+RUN apt-get update && apt-get install -y --no-install-recommends lsb-release wget apt-transport-https ca-certificates
+RUN wget -nv -O /etc/apt/trusted.gpg.d/proxysql-2.4.x-keyring.gpg 'https://repo.proxysql.com/ProxySQL/proxysql-2.4.x/repo_pub_key.gpg'
+RUN echo "deb https://repo.proxysql.com/ProxySQL/proxysql-2.4.x/$(lsb_release -sc)/ ./" | tee /etc/apt/sources.list.d/proxysql.list
+RUN apt update
+RUN apt install -y proxysql
+
 # run
 ADD wordpress/docker-entrypoint.sh  /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh 
