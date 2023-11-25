@@ -70,8 +70,8 @@ LC_CTYPE = "pl_PL.UTF-8"
 LANGUAGE = "pl_PL"
 
 [storage."/var/www/html"]
-type = "shared"
-max-size-mb = 6000
+type = "block"
+max-size-mb = 12000
 name = "wordpress"
 
 [expose.80]
