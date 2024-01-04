@@ -31,7 +31,6 @@ WORKDIR /var/lib/mysql
 """
 
 [expose.3306]
-probe.disable = true
 type = "tcp"
 
 [expose.9104] # metrics
