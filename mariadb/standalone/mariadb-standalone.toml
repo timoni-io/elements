@@ -41,7 +41,7 @@ probe.disable = true
 [storage."/var/lib/mysql"]
 max-size-mb = 1000
 type = "block"
-class = "local-path"
+# class = "local-path"
 
 [storage."/run/mysqld"]
 max-size-mb = 2
